@@ -11,12 +11,13 @@ use Session;
 
 class AdminController extends Controller
 {
-      public function __construct() {
-        $clink = Auth::guard('admin')->user()->clink;
-        Session::put('clink', $id);
-        $this->clink = Clink::find(Session::get('clink'));
-        dd(Session::get('clink'));
-    }
+    //   public function __construct() {
+        
+    //     $clink = Auth::guard('admin')->user()->clink;
+    //     Session::put('clink', $id);
+    //     $this->clink = Clink::find(Session::get('clink'));
+    //     dd(Session::get('clink'));
+    // }
     /**
      * Displays the dashboard page to the admin
      *

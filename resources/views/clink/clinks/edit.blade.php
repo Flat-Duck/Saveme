@@ -129,7 +129,7 @@
 
                     <div class="form-group">
                         <label for="specialties">Specialty</label>
-                        <select class="form-control"
+                        <select class=" select2 select2-hidden-accessible form-control"
                             name="specialties[]"
                             required
                             multiple

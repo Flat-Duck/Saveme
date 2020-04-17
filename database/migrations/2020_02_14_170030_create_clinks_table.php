@@ -15,14 +15,13 @@ class CreateClinksTable extends Migration
     {
         Schema::create('clinks', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->string('phone_number');
-            $table->decimal('latitude');
-            $table->decimal('longitude');
-            $table->boolean('status');
-            $table->boolean('visible');
-            $table->text('address');
-            $table->decimal('price');
+            $table->string('name')->nullable();
+            $table->string('phone_number')->nullable();
+            $table->decimal('latitude')->nullable();
+            $table->decimal('longitude')->nullable();
+            $table->boolean('status')->nullable();
+            $table->boolean('visible')->nullable();
+            $table->text('address')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

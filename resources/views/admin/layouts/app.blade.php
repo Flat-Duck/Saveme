@@ -8,7 +8,7 @@
 
     <link href="{{ mix('/css/admin/vendor.css') }}" rel="stylesheet">
     <link href="{{ mix('/css/admin/app.css') }}" rel="stylesheet">
-
+<link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet" />
     {{-- You can put page wise internal css style in styles section --}}
     @stack('styles')
 
@@ -18,7 +18,13 @@
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-
+<style>
+    .select2-container--default .select2-selection--multiple .select2-selection__choice {
+    background-color: #3c8dbc;
+    border-color: #367fa9;
+    padding: 1px 10px;
+    color: #fff;}
+</style>
     <!-- Google Font -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
@@ -28,7 +34,7 @@
         {{-- Header --}}
         <header class="main-header">
 
-            {{--  Logo  --}}
+            {{--    --}}
             <a href="{{ route('admin.dashboard') }}" class="logo">
                 <span class="logo-mini">{{ config('app.name') }}</span>
                 <span class="logo-lg">{{ config('app.name') }}</span>
@@ -49,7 +55,6 @@
 
                                 <span class="hidden-xs">{{ Auth::guard('admin')->user()->name }}</span>
                             </a>
-
                             <ul class="dropdown-menu">
                                 <li class="user-header">
                                     <img src="{{ asset('images/admin-avatar.png') }}" class="img-circle" alt="Admin avatar">
@@ -92,7 +97,7 @@
                 <ul class="sidebar-menu" data-widget="tree">
                     <li class="header">MENU</li>
 
-                    <li{{ $page == 'dashboard' ? ' class=active' : '' }}>
+                    <li {{ $page == 'dashboard' ? ' class=active' : '' }}>
                         <a href="{{ route('admin.dashboard') }}">
                             <i class="fa fa-building"></i>
                             <span>Dashboard</span>
@@ -190,7 +195,15 @@
             showNotice("{{ session('type') }}", "{{ session('message') }}");
         </script>
     @endif
+    
 
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+    // Initialize Select2 Elements
+                $('.select2').select2()
+            });
+    </script>
     {{-- You can put page wise javascript in scripts section --}}
     @stack('scripts')
 </body>

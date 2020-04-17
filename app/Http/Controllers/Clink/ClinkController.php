@@ -67,14 +67,16 @@ class ClinkController extends Controller
      * @param \App\Clink $clink
      * @return \Illuminate\Http\Response
      */
-    public function edit()
+    public function edit(Clink $clink)
     {
-        $id = Session::get('clink');
-        $clink = Clink::find($id);
+
+       // $id = Session::get('clink');
+       // $clink = Clink::find($id);
         $specialties = Specialty::all();
         $tests = Test::all();
         $services = Service::all();
 
+      //  dd($clink);
         $clink->specialties = $clink->specialties->pluck('id')->toArray();
         $clink->tests = $clink->tests->pluck('id')->toArray();
         $clink->services = $clink->services->pluck('id')->toArray();

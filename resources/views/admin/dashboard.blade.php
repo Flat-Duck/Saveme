@@ -4,6 +4,7 @@
 
 @section('content')
     <p>
+        kjlmkb.n,lm;k.n,m
         Admin Dashboard
     </p>
 @endsection

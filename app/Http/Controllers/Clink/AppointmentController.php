@@ -16,7 +16,7 @@ class AppointmentController extends Controller
         //$this->clink = Clink::find(Session::get('clink'));
        // dd(Session::get('clink'));
          //$this->clink = 
-         dd(Auth::guard('admin')->user());//->clink;
+       //  dd(Auth::guard('admin')->user());//->clink;
     }
     
     /**
@@ -26,7 +26,7 @@ class AppointmentController extends Controller
      */
     public function index()
     {
-        dd($this->clink);
+       // dd($this->clink);
         
         $appointments = $this->clink->appointments;
 

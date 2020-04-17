@@ -11,6 +11,5 @@ $factory->define(App\Clink::class, function (Faker $faker) {
         'status' => $faker->boolean(),
         'visible' => $faker->boolean(),
         'address' => $faker->address(),
-        'price' => $faker->randomFloat(2, 0, 99),
     ];
 });

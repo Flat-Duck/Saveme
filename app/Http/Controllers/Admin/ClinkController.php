@@ -48,11 +48,11 @@ class ClinkController extends Controller
         unset($validatedData['cover'], $validatedData['specialties'], $validatedData['tests'], $validatedData['services']);
         $clink = Clink::create($validatedData);
 
-        $clink->addMediaFromRequest('cover')->toMediaCollection('cover');
+      //  $clink->addMediaFromRequest('cover')->toMediaCollection('cover');
 
-        $clink->specialties()->sync(request('specialties'));
-        $clink->tests()->sync(request('tests'));
-        $clink->services()->sync(request('services'));
+        //$clink->specialties()->sync(request('specialties'));
+       // $clink->tests()->sync(request('tests'));
+       // $clink->services()->sync(request('services'));
 
         return redirect()->route('admin.clinks.index')->with([
             'type' => 'success',

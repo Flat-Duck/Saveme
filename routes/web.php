@@ -11,10 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 // Admin routes
 Route::name('admin.')->prefix('admin')->namespace('Admin')->group(function () {
     Route::namespace('Auth')->middleware('guest:admin')->group(function () {
@@ -33,6 +29,16 @@ Route::name('admin.')->prefix('admin')->namespace('Admin')->group(function () {
     Route::group(['middleware' => 'auth:admin'], function () {
         // Dashboard
         Route::get('/dashboard', 'AdminController@dashboard')->name('dashboard');
+
+
+
+        Route::get('clinks','ClinkController@index');
+        Route::get('clinks/add','ClinkController@create');
+        Route::post('clinks','ClinkController@store');
+        Route::get('clinks/{clink}/edit','ClinkController@edit');
+        Route::put('clinks/{clink}','ClinkController@update');
+        Route::delete('clink/{clink}', 'ClinkController@destroy'); 
+            
 
         Route::resource('clinks', 'ClinkController');
 

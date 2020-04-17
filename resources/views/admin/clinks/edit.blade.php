@@ -129,7 +129,7 @@
 
                     <div class="form-group">
                         <label for="specialties">Specialty</label>
-                        <select class="form-control"
+                        <select class=" select2 form-control"
                             name="specialties[]"
                             required
                             multiple
@@ -147,7 +147,7 @@
 
                     <div class="form-group">
                         <label for="tests">Test</label>
-                        <select class="form-control"
+                        <select class=" select2 form-control"
                             name="tests[]"
                             required
                             multiple
@@ -165,7 +165,7 @@
 
                     <div class="form-group">
                         <label for="services">Service</label>
-                        <select class="form-control"
+                        <select class=" select2 form-control"
                             name="services[]"
                             required
                             multiple

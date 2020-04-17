@@ -2,6 +2,14 @@
 
 @section('title', 'Add New Clink')
 
+@push('styles')
+<style>
+    #map {
+        height: 300px;
+        width: 600px;
+    }
+</style>    
+@endpush
 @section('content')
 <div class="row">
     <div class="col-xs-12">
@@ -64,119 +72,16 @@
                         >
                     </div>
 
-                    <div class="form-group">
-                        <label class="checkbox-inline">
-                            <input type="hidden" name="status" value="0">
-                            <input type="checkbox"
-                                name="status"
-                                value="1"
-                                {{ old('status') == 1 ? 'checked' : '' }}
-                            >
-                                Status
-                        </label>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="checkbox-inline">
-                            <input type="hidden" name="visible" value="0">
-                            <input type="checkbox"
-                                name="visible"
-                                value="1"
-                                {{ old('visible') == 1 ? 'checked' : '' }}
-                            >
-                                Visible
-                        </label>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="cover">Cover</label>
-                        <input type="file"
-                            class="form-control"
-                            name="cover"
-                            required
-                            value="{{ old('cover') }}"
-                            id="cover"
-                        >
-                    </div>
-
-                    <div class="form-group">
-                        <label for="address">Address</label>
-                        <textarea class="form-control"
-                            name="address"
-                            id="address"
-                            required
-                            placeholder="Address"
-                        >{{ old('address') }}</textarea>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="price">Price</label>
-                        <input type="number"
-                            class="form-control"
-                            name="price"
-                            required
-                            placeholder="Price"
-                            value="{{ old('price') }}"
-                            step="any"
-                            id="price"
-                        >
-                    </div>
-
-                    <div class="form-group">
-                        <label for="specialties">Specialty</label>
-                        <select class="form-control"
-                            name="specialties[]"
-                            required
-                            multiple
-                            id="specialties"
-                        >
-                            @foreach ($specialties as $specialty)
-                                <option value="{{ $specialty->id }}"
-                                    {{ is_array(old('specialties')) && in_array($specialty->id, old('specialties')) ? 'selected' : '' }}
-                                >
-                                    {{ $specialty->name }}
-                                </option>
-                            @endforeach
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="tests">Test</label>
-                        <select class="form-control"
-                            name="tests[]"
-                            required
-                            multiple
-                            id="tests"
-                        >
-                            @foreach ($tests as $test)
-                                <option value="{{ $test->id }}"
-                                    {{ is_array(old('tests')) && in_array($test->id, old('tests')) ? 'selected' : '' }}
-                                >
-                                    {{ $test->name }}
-                                </option>
-                            @endforeach
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="services">Service</label>
-                        <select class="form-control"
-                            name="services[]"
-                            required
-                            multiple
-                            id="services"
-                        >
-                            @foreach ($services as $service)
-                                <option value="{{ $service->id }}"
-                                    {{ is_array(old('services')) && in_array($service->id, old('services')) ? 'selected' : '' }}
-                                >
-                                    {{ $service->name }}
-                                </option>
-                            @endforeach
-                        </select>
-                    </div>
                 </div>
+<div id="latclicked"></div>
+<div id="longclicked"></div>
 
+<div hidden="true" id="latmoved"></div>
+<div hidden="true" id="longmoved"></div>
+
+<div style="padding:10px">
+    <div id="map"></div>
+</div>
                 <div class="box-footer">
                     <button type="submit" class="btn btn-primary">Submit</button>
 
@@ -189,3 +94,77 @@
     </div>
 </div>
 @endsection
+@push('scripts')
+    <script type="text/javascript">
+            var map;
+                    
+                    
+                    
+                    function initMap() {                            
+                        var latitude = 32.8872; // YOUR LATITUDE VALUE
+                        var longitude = 13.1913; // YOUR LONGITUDE VALUE
+                        
+                        var myLatLng = {lat: latitude, lng: longitude};
+                        
+                        map = new google.maps.Map(document.getElementById('map'), {
+                          center: myLatLng,
+                          zoom: 14,
+                          disableDoubleClickZoom: true, // disable the default map zoom on double click
+                        });
+                        
+                        // Update lat/long value of div when anywhere in the map is clicked    
+                        google.maps.event.addListener(map,'click',function(event) {                
+                            document.getElementById('latitude').setAttribute('value',event.latLng.lat());
+                            document.getElementById('longitude').setAttribute('value',event.latLng.lng());
+                        });
+                        
+                        // Update lat/long value of div when you move the mouse over the map
+                        google.maps.event.addListener(map,'mousemove',function(event) {
+                            document.getElementById('latmoved').innerHTML = event.latLng.lat();
+                            document.getElementById('longmoved').innerHTML = event.latLng.lng();
+                        });
+                                
+                        var marker = new google.maps.Marker({
+                          position: myLatLng,
+                          map: map,
+                          //title: 'Hello World'
+                          
+                          // setting latitude & longitude as title of the marker
+                          // title is shown when you hover over the marker
+                          title: latitude + ', ' + longitude 
+                        });    
+                        
+                        // Update lat/long value of div when the marker is clicked
+                        marker.addListener('click', function(event) {              
+                          document.getElementById('latitude').setAttribute('value',event.latLng.lat());
+                          document.getElementById('longitude').setAttribute('value',event.latLng.lng());
+                        });
+                        
+                        // Create new marker on double click event on the map
+                        google.maps.event.addListener(map,'dblclick',function(event) {
+                            var marker = new google.maps.Marker({
+                              position: event.latLng, 
+                              map: map, 
+                              title: event.latLng.lat()+', '+event.latLng.lng()
+                            });
+                            
+                            // Update lat/long value of div when the marker is clicked
+                            marker.addListener('click', function() {
+                              document.getElementById('latitude').setAttribute('value',event.latLng.lat());
+                              document.getElementById('longitude').setAttribute('value',event.latLng.lng());
+                            });            
+                        });
+                        
+                        // Create new marker on single click event on the map
+                        /*google.maps.event.addListener(map,'click',function(event) {
+                            var marker = new google.maps.Marker({
+                              position: event.latLng, 
+                              map: map, 
+                              title: event.latLng.lat()+', '+event.latLng.lng()
+                            });                
+                        });*/
+                    }
+        </script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBHsBQW1LVlFpybSaD-yYNSpbxcMKMAPI8&callback=initMap" async
+            defer></script>
+@endpush

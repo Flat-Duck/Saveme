@@ -111,12 +111,12 @@
                         </a>
                     </li>
 
-                    <li {{ $page == 'device' ? ' class=active' : '' }}>
+                    {{-- <li {{ $page == 'device' ? ' class=active' : '' }}>
                         <a href="{{ route('admin.devices.index') }}">
                             <i class="fa fa-arrow-right"></i>
                             <span>Devices</span>
                         </a>
-                    </li>
+                    </li> --}}
 
                     <li {{ $page == 'specialty' ? ' class=active' : '' }}>
                         <a href="{{ route('admin.specialties.index') }}">

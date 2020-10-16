@@ -12,9 +12,9 @@ class EmergencyTableSeeder extends Seeder
     public function run()
     {
         factory(App\Emergency::class, 5)->create()->each(function ($emergency) {
-            $emergency->clink->addMediaFromUrl('https://source.unsplash.com/random/200x200')
-                ->toMediaCollection('cover')
-            ;
+            // $emergency->clink->addMediaFromUrl('https://source.unsplash.com/random/200x200')
+            //     ->toMediaCollection('cover')
+            // ;
         });
     }
 }

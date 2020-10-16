@@ -3,7 +3,7 @@ namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller as BaseController;
-
+use App\Helper;
 class ApiController extends BaseController
 {
     /**
@@ -15,6 +15,7 @@ class ApiController extends BaseController
     {
     	$response = [
             'success' => true,
+            'timeStamp' =>Helper::firstWhere('tag', "original")->time_stamp,
             'message' => $message,        
             'data'    => $data,
         

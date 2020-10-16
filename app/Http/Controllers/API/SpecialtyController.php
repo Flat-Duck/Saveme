@@ -5,7 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Specialty;
-class SpecialtyController extends Controller
+class SpecialtyController  extends ApiController
 {
     public function index()
     {

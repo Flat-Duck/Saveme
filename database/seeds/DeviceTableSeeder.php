@@ -12,13 +12,13 @@ class DeviceTableSeeder extends Seeder
     public function run()
     {
         factory(App\Device::class, 5)->create()->each(function ($device) {
-            $device->addMediaFromUrl('https://source.unsplash.com/random/200x200')
-                ->toMediaCollection('picture')
-            ;
+            // $device->addMediaFromUrl('https://source.unsplash.com/random/200x200')
+            //     ->toMediaCollection('picture')
+            // ;
 
-            $device->clink->addMediaFromUrl('https://source.unsplash.com/random/200x200')
-                ->toMediaCollection('cover')
-            ;
+            // $device->clink->addMediaFromUrl('https://source.unsplash.com/random/200x200')
+            //     ->toMediaCollection('cover')
+            // ;
         });
     }
 }

@@ -12,19 +12,21 @@
 
             <form role="form" method="POST" action="{{ route('clink.tests.store') }}">
                 @csrf
-
+                
                 <div class="box-body">
-                    <div class="form-group">
-                        <label for="name">Name</label>
-                        <input type="text"
-                            class="form-control"
-                            name="name"
-                            required
-                            placeholder="Name"
-                            value="{{ old('name') }}"
-                            id="name"
-                        >
-                    </div>
+                <div class="form-group">
+                    <label for="tests">Test</label>
+                    <select class=" select2 form-control" name="tests[]" required multiple id="tests">
+                        @foreach ($tests as $test)
+                        <option value="{{ $test->id }}" {{ in_array($test->id, old('tests', $clink->tests->pluck('id'))) ? 'selected' : '' }}>
+                            {{ $test->name }}
+                        </option>
+                        @endforeach
+                    </select>
+                </div>
+
+
+
                 </div>
 
                 <div class="box-footer">

@@ -12,13 +12,13 @@ class DoctorTableSeeder extends Seeder
     public function run()
     {
         factory(App\Doctor::class, 5)->create()->each(function ($doctor) {
-            $doctor->addMediaFromUrl('https://source.unsplash.com/random/200x200')
-                ->toMediaCollection('picture')
-            ;
+            // $doctor->addMediaFromUrl('https://source.unsplash.com/random/200x200')
+            //     ->toMediaCollection('picture')
+            // ;
 
-            $doctor->clink->addMediaFromUrl('https://source.unsplash.com/random/200x200')
-                ->toMediaCollection('cover')
-            ;
+            // $doctor->clink->addMediaFromUrl('https://source.unsplash.com/random/200x200')
+            //     ->toMediaCollection('cover')
+            // ;
         });
     }
 }

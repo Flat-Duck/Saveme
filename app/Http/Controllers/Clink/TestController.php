@@ -6,20 +6,24 @@ use App\Test;
 use App\Clink;
 use App\Http\Controllers\Controller;
 use Session;
+use Auth;
 class TestController extends Controller
 {
+    
+
+
     /**
      * Display a list of Tests.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        $id = Session::get('clink');
-        $clink = Clink::find($id);
+    {  
+   
+        $clink = $this->loadClink();
         
         $tests = $clink->tests;
-
+ //
         return view('clink.tests.index', compact('tests'));
     }
 
@@ -30,7 +34,12 @@ class TestController extends Controller
      */
     public function create()
     {
-        return view('clink.tests.add');
+        $tests = Test::all();
+       $clink = $this->loadClink();
+       //dd($clink->tests->pluck('id'));
+
+        return view('clink.tests.add',compact('clink','tests'));
+        //return view('clink.tests.add',compact('specialties', 'tests', 'services'));
     }
 
     /**

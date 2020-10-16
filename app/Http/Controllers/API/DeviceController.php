@@ -5,7 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Device;
-class DeviceController extends Controller
+class DeviceController  extends ApiController
 {
     public function index()
     {

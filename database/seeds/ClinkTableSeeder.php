@@ -12,9 +12,9 @@ class ClinkTableSeeder extends Seeder
     public function run()
     {
         factory(App\Clink::class, 5)->create()->each(function ($clink) {
-            $clink->addMediaFromUrl('https://source.unsplash.com/random/200x200')
-                ->toMediaCollection('cover')
-            ;
+        //    $clink->addMediaFromUrl('https://source.unsplash.com/random/200x200')
+          //      ->toMediaCollection('cover')
+           // ;
         });
     }
 }

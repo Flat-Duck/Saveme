@@ -12,13 +12,13 @@ class AppointmentTableSeeder extends Seeder
     public function run()
     {
         factory(App\Appointment::class, 5)->create()->each(function ($appointment) {
-            $appointment->clink->addMediaFromUrl('https://source.unsplash.com/random/200x200')
-                ->toMediaCollection('cover')
-            ;
+            // $appointment->clink->addMediaFromUrl('https://source.unsplash.com/random/200x200')
+            //     ->toMediaCollection('cover')
+            // ;
 
-            $appointment->doctor->addMediaFromUrl('https://source.unsplash.com/random/200x200')
-                ->toMediaCollection('picture')
-            ;
+            // $appointment->doctor->addMediaFromUrl('https://source.unsplash.com/random/200x200')
+            //     ->toMediaCollection('picture')
+            // ;
         });
     }
 }

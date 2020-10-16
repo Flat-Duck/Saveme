@@ -5,7 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Doctor;
-class DoctorController extends Controller
+class DoctorController  extends ApiController
 {
     
     public function index()
@@ -29,3 +29,11 @@ class DoctorController extends Controller
     }
 
 }
+// retages
+// hala 
+
+
+// shahd & maren
+// wala
+// sabha
+// zamzam & nairouz

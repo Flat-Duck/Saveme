@@ -15,6 +15,7 @@ class ClinkController extends ApiController
     }
     public function show(Clink $clink)
     {
+         $clink->load('doctors')->load("devices");
         return $this->sendResponse("Clink Profile Loaded",$clink);    
     }
     public function doctors(Clink $clink)

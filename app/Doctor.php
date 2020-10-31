@@ -20,6 +20,7 @@ class Doctor extends Model implements HasMedia
         'name', 'phone', 'qualification', 'picture', 'clink_id', 'specialty_id'
     ];
 
+    protected $appends = array('specialty_name');
     /**
      * Validation rules
      *
@@ -55,12 +56,25 @@ class Doctor extends Model implements HasMedia
         return $this->belongsTo('App\Clink');
     }
 
+        /**
+     * Get the clinks for the Doctor.
+     */
+    public function clinks()
+    {
+        return $this->belongsToMany('App\Clink');
+    }
+
     /**
      * Get the specialty for the Doctor.
      */
     public function specialty()
     {
         return $this->belongsTo('App\Specialty');
+    }
+
+    public function getSpecialtyNameAttribute()
+    {
+        return  $this->specialty->name;
     }
 
     /**

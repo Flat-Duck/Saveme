@@ -64,12 +64,19 @@ class Clink extends Model implements HasMedia
         return $this->hasMany('App\Device');
     }
 
-    /**
+    // /**
+    //  * Get the doctors for the Clink.
+    //  */
+    // public function doctors()
+    // {
+    //     return $this->hasMany('App\Doctor');
+    // }
+        /**
      * Get the doctors for the Clink.
      */
     public function doctors()
     {
-        return $this->hasMany('App\Doctor');
+        return $this->belongsToMany('App\Doctor');
     }
 
     /**

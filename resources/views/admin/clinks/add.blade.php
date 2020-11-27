@@ -1,6 +1,6 @@
 @extends('admin.layouts.app', ['page' => 'clink'])
 
-@section('title', 'Add New Clink')
+@section('title', 'إضافة جديد العيادة')
 
 @push('styles')
 <style>
@@ -15,7 +15,7 @@
     <div class="col-xs-12">
         <div class="box box-primary">
             <div class="box-header with-border">
-                <h3 class="box-title">Add New Clink</h3>
+                <h3 class="box-title">إضافة عيادة جديد </h3>
             </div>
 
             <form role="form" method="POST" enctype="multipart/form-data" action="{{ route('admin.clinks.store') }}">
@@ -23,36 +23,36 @@
 
                 <div class="box-body">
                     <div class="form-group">
-                        <label for="name">Name</label>
+                        <label for="name">الإسم</label>
                         <input type="text"
                             class="form-control"
                             name="name"
                             required
-                            placeholder="Name"
+                            placeholder="الإسم"
                             value="{{ old('name') }}"
                             id="name"
                         >
                     </div>
 
                     <div class="form-group">
-                        <label for="phone_number">Phone Number</label>
+                        <label for="phone_number">رقم الهاتف</label>
                         <input type="text"
                             class="form-control"
                             name="phone_number"
                             required
-                            placeholder="Phone Number"
+                            placeholder="رقم الهاتف"
                             value="{{ old('phone_number') }}"
                             id="phone_number"
                         >
                     </div>
 
                     <div class="form-group">
-                        <label for="latitude">Latitude</label>
+                        <label for="latitude">إحداثيات الطول</label>
                         <input type="number"
                             class="form-control"
                             name="latitude"
                             required
-                            placeholder="Latitude"
+                            placeholder="إحداثيات الطول"
                             value="{{ old('latitude') }}"
                             step="any"
                             id="latitude"
@@ -60,12 +60,12 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="longitude">Longitude</label>
+                        <label for="longitude">إحداثيات العرض</label>
                         <input type="number"
                             class="form-control"
                             name="longitude"
                             required
-                            placeholder="Longitude"
+                            placeholder="إحداثيات العرض"
                             value="{{ old('longitude') }}"
                             step="any"
                             id="longitude"
@@ -83,10 +83,10 @@
     <div id="map"></div>
 </div>
                 <div class="box-footer">
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn btn-primary">حفظ</button>
 
                     <a href="{{ route('admin.clinks.index') }}" class="btn btn-default">
-                        Cancel
+                        إلغاء
                     </a>
                 </div>
             </form>

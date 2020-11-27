@@ -26,7 +26,7 @@ Route::name('admin.')->prefix('admin')->namespace('Admin')->group(function () {
     });
 
     // Logged in admin user required
-    Route::group(['middleware' => 'auth:admin'], function () {
+    Route::middleware(['auth:admin', 'IsAdmin'])->group( function () {
         // Dashboard
         Route::get('/dashboard', 'AdminController@dashboard')->name('dashboard');
 
@@ -81,7 +81,8 @@ Route::name('clink.')->prefix('clink')->namespace('Clink')->group(function () {
     });
 
     // Logged in admin user required
-    Route::group(['middleware' => 'auth:admin'], function () {
+    Route::middleware(['auth:admin', 'IsClink'])->group( function () {
+//    Route::group(['middleware' => 'auth:admin'], function () {
         // Dashboard
         Route::get('/dashboard', 'AdminController@dashboard')->name('dashboard');
 
@@ -89,8 +90,15 @@ Route::name('clink.')->prefix('clink')->namespace('Clink')->group(function () {
 
         Route::get('/clink', 'ClinkController@edit')->name('edit');
         Route::put('/clink/{clink}', 'ClinkController@update')->name('update');
+       
+        Route::get('/reactive', 'ReactiveController@show')->name('reactive');
+        Route::put('/reactive', 'ReactiveController@update')->name('reactive.update');
+       
+        Route::get('/settings', 'ClinkController@edit')->name('settings.edit');
+        Route::put('/settings', 'ClinkController@update')->name('settings.update');
 
         Route::resource('devices', 'DeviceController');
+        Route::resource('admins', 'AdminsController');
 
         Route::resource('specialties', 'SpecialtyController');
 

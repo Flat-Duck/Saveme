@@ -17,11 +17,8 @@ class CreateDevicesTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->text('description');
-            $table->integer('clink_id')->unsigned()->index();
             $table->timestamps();
             $table->softDeletes();
-            
-            $table->foreign('clink_id')->references('id')->on('clinks');
         });
     }
 

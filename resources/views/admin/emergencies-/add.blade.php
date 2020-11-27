@@ -1,46 +1,45 @@
 @extends('admin.layouts.app', ['page' => 'emergency'])
 
-@section('title', 'Edit Emergency')
+@section('title', 'إضافة جديدEmergency')
 
 @section('content')
 <div class="row">
     <div class="col-xs-12">
         <div class="box box-primary">
             <div class="box-header with-border">
-                <h3 class="box-title">Edit Emergency</h3>
+                <h3 class="box-title">إضافة جديدEmergency</h3>
             </div>
 
-            <form role="form" method="POST" action="{{ route('admin.emergencies.update', ['emergency' => $emergency->id]) }}">
+            <form role="form" method="POST" action="{{ route('admin.emergencies.store') }}">
                 @csrf
-                @method('PUT')
 
                 <div class="box-body">
                     <div class="form-group">
-                        <label for="name">Name</label>
+                        <label for="name">الإسم</label>
                         <input type="text"
                             class="form-control"
                             name="name"
                             required
-                            placeholder="Name"
-                            value="{{ old('name', $emergency->name) }}"
+                            placeholder="الإسم"
+                            value="{{ old('name') }}"
                             id="name"
                         >
                     </div>
 
                     <div class="form-group">
-                        <label for="qualification">Qualification</label>
+                        <label for="qualification">المؤهل</label>
                         <input type="text"
                             class="form-control"
                             name="qualification"
                             required
-                            placeholder="Qualification"
-                            value="{{ old('qualification', $emergency->qualification) }}"
+                            placeholder="المؤهل"
+                            value="{{ old('qualification') }}"
                             id="qualification"
                         >
                     </div>
 
                     <div class="form-group">
-                        <label for="clink-id">Clink</label>
+                        <label for="clink-id">العيادة</label>
                         <select class="form-control"
                             name="clink_id"
                             required
@@ -48,7 +47,7 @@
                         >
                             @foreach ($clinks as $clink)
                                 <option value="{{ $clink->id }}"
-                                    {{ old('clink_id', $emergency->clink_id) == $clink->id ? 'selected' : '' }}
+                                    {{ old('clink_id') == $clink->id ? 'selected' : '' }}
                                 >
                                     {{ $clink->name }}
                                 </option>
@@ -58,10 +57,10 @@
                 </div>
 
                 <div class="box-footer">
-                    <button type="submit" class="btn btn-primary">Update</button>
+                    <button type="submit" class="btn btn-primary">حفظ</button>
 
                     <a href="{{ route('admin.emergencies.index') }}" class="btn btn-default">
-                        Cancel
+                        إلغاء
                     </a>
                 </div>
             </form>

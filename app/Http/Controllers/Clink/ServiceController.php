@@ -5,7 +5,12 @@ namespace App\Http\Controllers\Clink;
 use App\Service;
 use App\Clink;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use Session;
+use Auth;
+use DB;
+use App\Doctor;
+use App\Server;
 class ServiceController extends Controller
 {
     /**
@@ -15,10 +20,10 @@ class ServiceController extends Controller
      */
     public function index()
     {
-          $id = Session::get('clink');
-        $clink = Clink::find($id);
+       
+        $clink = Auth::guard('admin')->user()->clink;
         
-        $services = $clink->services;
+        $services = $clink->servers;
 
         return view('clink.services.index', compact('services'));
     }
@@ -30,7 +35,12 @@ class ServiceController extends Controller
      */
     public function create()
     {
-        return view('clink.services.add');
+        $clink = Auth::guard('admin')->user()->clink;
+        $services = Service::all();
+      
+        $doctors = $clink->doctors;
+      
+        return view('clink.services.add',compact('clink','doctors','services'));
     }
 
     /**
@@ -38,16 +48,31 @@ class ServiceController extends Controller
      *
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function store()
+    public function store(Request $request)
     {
-        $validatedData = request()->validate(Service::validationRules());
-
-        $service = Service::create($validatedData);
-
+      //  dd($request->all());
+        $clink = Auth::guard('admin')->user()->clink;
+        request()->merge(['clink_id'=>$clink->id]);
+        $validatedData = request()->validate($this->validationRules());
+        DB::table('clink_service')->insert(
+            ['clink_id'=>$clink->id ,'service_id' => $request->service_id,'doctor_id'=>$request->doctor_id]
+        );
         return redirect()->route('clink.services.index')->with([
             'type' => 'success',
             'message' => 'Service added'
         ]);
+    }
+ /**
+     * Validation rules
+     *
+     * @return array
+     **/
+    public static function validationRules()
+    {
+        return [
+            'service_id' => 'required|numeric',
+            'doctor_id' => 'required|numeric',
+        ];
     }
 
     /**
@@ -56,9 +81,14 @@ class ServiceController extends Controller
      * @param \App\Service $service
      * @return \Illuminate\Http\Response
      */
-    public function edit(Service $service)
+    public function edit(Server $service)
     {
-        return view('clink.services.edit', compact('service'));
+        $clink = Auth::guard('admin')->user()->clink;
+        $services = Service::all();
+
+      
+        $doctors = $clink->doctors;
+        return view('clink.services.edit', compact('service','services','doctors'));
     }
 
     /**
@@ -67,10 +97,10 @@ class ServiceController extends Controller
      * @param \App\Service $service
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Service $service)
+    public function update(Server $service)
     {
         $validatedData = request()->validate(
-            Service::validationRules($service->id)
+            $this->validationRules($service->id)
         );
 
         $service->update($validatedData);

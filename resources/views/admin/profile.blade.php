@@ -1,13 +1,13 @@
 @extends('admin.layouts.app', ['page' => ''])
 
-@section('title', 'Profile')
+@section('title', 'الملف الشخصي')
 
 @section('content')
 <div class="row">
     <div class="col-md-6">
         <div class="box box-primary">
             <div class="box-header with-border">
-                <h3 class="box-title">Update Profile</h3>
+                <h3 class="box-title">تعديل الملف الشخصي</h3>
             </div>
 
             <form method="post">
@@ -15,51 +15,51 @@
 
                 <div class="box-body">
                     <div class="form-group">
-                        <label for="name">Name</label>
+                        <label for="name">الإسم</label>
                         <input type="text"
                             name="name"
                             class="form-control"
                             id="name"
-                            placeholder="Name"
+                            placeholder="الإسم"
                             value="{{ old('name', $admin->name) }}"
                         >
                     </div>
 
                     <div class="form-group">
-                        <label for="email">Email address</label>
+                        <label for="email">البريد الإلكتروني</label>
                         <input type="email"
                             name="email"
                             class="form-control"
                             id="email"
-                            placeholder="Email address"
+                            placeholder="البريد الإلكتروني"
                             value="{{ old('email', $admin->email) }}"
                         >
                     </div>
 
                     <div class="form-group">
-                        <label for="username">Username</label>
+                        <label for="username">إسم المستخدم</label>
                         <input type="text"
                             name="username"
                             class="form-control"
                             id="username"
-                            placeholder="Username"
+                            placeholder="إسم المستخدم"
                             value="{{ old('username', $admin->username) }}"
                         >
                     </div>
                 </div>
 
                 <div class="box-footer">
-                    <button type="submit" class="btn btn-primary">Update Profile</button>
+                    <button type="submit" class="btn btn-primary">تعديل الملف الشخصي</button>
                 </div>
             </form>
         </div>
     </div>
 
-    {{-- Password update --}}
+    {{-- كلمة المرور update --}}
     <div class="col-md-6">
         <div class="box box-primary">
             <div class="box-header with-border">
-                <h3 class="box-title">Change Password</h3>
+                <h3 class="box-title">تغيير كلمة المرور</h3>
             </div>
 
             <form method="post" action="{{ route('admin.password_update') }}">
@@ -67,36 +67,36 @@
 
                 <div class="box-body">
                     <div class="form-group">
-                        <label for="current-password">Current Password</label>
+                        <label for="current-password"> كلمة المرور الحالية</label>
                         <input type="password"
                             name="current_password"
                             class="form-control"
                             id="current-password"
-                            placeholder="Current Password"
+                            placeholder=" كلمة المرور الحالية"
                             pattern=".{6,}"
                             title="6 characters minimum"
                         >
                     </div>
 
                     <div class="form-group">
-                        <label for="password">New Password</label>
+                        <label for="password"> كلمة المرور الجديدة</label>
                         <input type="password"
                             name="password"
                             class="form-control"
                             id="password"
-                            placeholder="New Password"
+                            placeholder=" كلمة المرور الجديدة"
                             pattern=".{6,}"
                             title="6 characters minimum"
                         >
                     </div>
 
                     <div class="form-group">
-                        <label for="confirm-password">Confirm Password</label>
+                        <label for="confirm-password">تأكيد كلمة المرور</label>
                         <input type="password"
                             name="password_confirmation"
                             class="form-control"
                             id="confirm-password"
-                            placeholder="Confirm Password"
+                            placeholder="تأكيد كلمة المرور"
                             pattern=".{6,}"
                             title="6 characters minimum"
                         >
@@ -104,7 +104,7 @@
                 </div>
 
                 <div class="box-footer">
-                    <button type="submit" class="btn btn-primary">Change Password</button>
+                    <button type="submit" class="btn btn-primary">تغيير كلمة المرور</button>
                 </div>
             </form>
         </div>

@@ -25,7 +25,7 @@ class Admin extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'username', 'password',
+        'name', 'email', 'username', 'password','clink_id'
     ];
 
     /**
@@ -59,9 +59,26 @@ class Admin extends Authenticatable
             'name' => 'required|string|max:255',
             'username' => 'required|string|max:255',
             'email' => 'required|email|max:255',
+            'clink_id' => 'numeric',
         ];
     }
 
+    
+    /**
+     * Validation rules
+     *
+     * @return array
+     **/
+    public static function validationRules()
+    {
+        return [
+            'name' => 'required|string|max:255',
+            'username' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
+            'password' => 'string|min:6',
+            'clink_id' => 'numeric',
+        ];
+    }
     /**
      * Password update validation rules
      *

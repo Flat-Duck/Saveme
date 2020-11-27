@@ -10,15 +10,7 @@ use App\Http\Controllers\Controller;
 
 class AppointmentController extends Controller
 {
-    private $clink = "";
-    
-    public function __construct() {
-        //$this->clink = Clink::find(Session::get('clink'));
-       // dd(Session::get('clink'));
-         //$this->clink = 
-       //  dd(Auth::guard('admin')->user());//->clink;
-    }
-    
+   
     /**
      * Display a list of Appointments.
      *
@@ -26,9 +18,9 @@ class AppointmentController extends Controller
      */
     public function index()
     {
-       // dd($this->clink);
+       $clink = Auth::guard('admin')->user()->clink;
         
-        $appointments = $this->clink->appointments;
+        $appointments = $clink->appointments;
 
         return view('clink.appointments.index', compact('appointments'));
     }
@@ -40,10 +32,11 @@ class AppointmentController extends Controller
      */
     public function create()
     {
-        $clink = Session::get('clink');
-        $doctors = Doctor::all();
 
-        return view('clink.appointments.add', compact('clink', 'doctors'));
+        $clink = Auth::guard('admin')->user()->clink;
+        $doctors = $clink->doctors;
+
+        return view('clink.appointments.add', compact('doctors'));
     }
 
     /**
@@ -53,6 +46,9 @@ class AppointmentController extends Controller
      */
     public function store()
     {
+        // $clink = Auth::guard('admin')->user()->clink;
+        $id = Auth::guard('admin')->user()->clink->id;
+        request()->merge(['clink_id'=>$id]);
         $validatedData = request()->validate(Appointment::validationRules());
 
         $appointment = Appointment::create($validatedData);
@@ -71,10 +67,11 @@ class AppointmentController extends Controller
      */
     public function edit(Appointment $appointment)
     {
-        $clink = Session::get('clink');
-        $doctors = Doctor::all();
+        $clink = Auth::guard('admin')->user()->clink;
+       // $clink = Session::get('clink');
+        $doctors = $clink->doctors;///::all();
 
-        return view('clink.appointments.edit', compact('appointment', 'clink', 'doctors'));
+        return view('clink.appointments.edit', compact('appointment', 'doctors'));
     }
 
     /**
@@ -85,6 +82,8 @@ class AppointmentController extends Controller
      */
     public function update(Appointment $appointment)
     {
+        $id = Auth::guard('admin')->user()->clink->id;
+        request()->merge(['clink_id'=>$id]);
         $validatedData = request()->validate(
             Appointment::validationRules($appointment->id)
         );

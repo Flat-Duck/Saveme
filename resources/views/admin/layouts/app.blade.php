@@ -29,7 +29,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
 
-<body class="hold-transition skin-blue sidebar-mini">
+<body dir="rtl" class="hold-transition skin-blue sidebar-mini">
     <div class="wrapper">
         {{-- Header --}}
         <header class="main-header">
@@ -65,11 +65,11 @@
                                 <li class="user-footer">
                                     <div class="pull-left">
                                         <a href="{{ route('admin.profile') }}" class="btn btn-default btn-flat">
-                                            Profile
+                                            الملف الشخصي
                                         </a>
                                     </div>
                                     <div class="pull-right">
-                                        <a href="{{ route('admin.logout') }}" class="btn btn-default btn-flat">Sign out</a>
+                                        <a href="{{ route('admin.logout') }}" class="btn btn-default btn-flat">تسجيل خروج</a>
                                     </div>
                                 </li>
                             </ul>
@@ -100,65 +100,65 @@
                     <li {{ $page == 'dashboard' ? ' class=active' : '' }}>
                         <a href="{{ route('admin.dashboard') }}">
                             <i class="fa fa-building"></i>
-                            <span>Dashboard</span>
+                            <span>لوحة التحكم</span>
                         </a>
                     </li>
 
                     <li {{ $page == 'clink' ? ' class=active' : '' }}>
                         <a href="{{ route('admin.clinks.index') }}">
                             <i class="fa fa-arrow-right"></i>
-                            <span>Clinks</span>
+                            <span>العيادات</span>
                         </a>
                     </li>
 
-                    {{-- <li {{ $page == 'device' ? ' class=active' : '' }}>
+                    <li {{ $page == 'device' ? ' class=active' : '' }}>
                         <a href="{{ route('admin.devices.index') }}">
                             <i class="fa fa-arrow-right"></i>
-                            <span>Devices</span>
+                            <span>الأجهزة</span>
                         </a>
-                    </li> --}}
+                    </li>
 
                     <li {{ $page == 'specialty' ? ' class=active' : '' }}>
                         <a href="{{ route('admin.specialties.index') }}">
                             <i class="fa fa-arrow-right"></i>
-                            <span>Specialties</span>
+                            <span>التخصصات</span>
                         </a>
                     </li>
 
                     <li {{ $page == 'doctor' ? ' class=active' : '' }}>
                         <a href="{{ route('admin.doctors.index') }}">
                             <i class="fa fa-arrow-right"></i>
-                            <span>Doctors</span>
+                            <span>الأطباء</span>
                         </a>
                     </li>
 
                     <li {{ $page == 'test' ? ' class=active' : '' }}>
                         <a href="{{ route('admin.tests.index') }}">
                             <i class="fa fa-arrow-right"></i>
-                            <span>Tests</span>
+                            <span>التحاليل</span>
                         </a>
                     </li>
 
                     <li {{ $page == 'service' ? ' class=active' : '' }}>
                         <a href="{{ route('admin.services.index') }}">
                             <i class="fa fa-arrow-right"></i>
-                            <span>Services</span>
+                            <span>الخدمات</span>
                         </a>
                     </li>
 
-                    <li {{ $page == 'emergency' ? ' class=active' : '' }}>
+                    {{-- <li {{ $page == 'emergency' ? ' class=active' : '' }}>
                         <a href="{{ route('admin.emergencies.index') }}">
                             <i class="fa fa-arrow-right"></i>
                             <span>Emergencies</span>
                         </a>
-                    </li>
+                    </li> --}}
 
-                    <li {{ $page == 'appointment' ? ' class=active' : '' }}>
+                    {{-- <li {{ $page == 'appointment' ? ' class=active' : '' }}>
                         <a href="{{ route('admin.appointments.index') }}">
                             <i class="fa fa-arrow-right"></i>
-                            <span>Appointments</span>
+                            <span>المواعيد</span>
                         </a>
-                    </li>
+                    </li> --}}
                 </ul>
             </section>
         </aside>

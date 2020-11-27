@@ -1,13 +1,13 @@
 @extends('admin.layouts.app', ['page' => 'test'])
 
-@section('title', 'Edit Test')
+@section('title', 'تعديل التحليل')
 
 @section('content')
 <div class="row">
     <div class="col-xs-12">
         <div class="box box-primary">
             <div class="box-header with-border">
-                <h3 class="box-title">Edit Test</h3>
+                <h3 class="box-title">تعديل التحليل</h3>
             </div>
 
             <form role="form" method="POST" action="{{ route('admin.tests.update', ['test' => $test->id]) }}">
@@ -16,12 +16,12 @@
 
                 <div class="box-body">
                     <div class="form-group">
-                        <label for="name">Name</label>
+                        <label for="name">الإسم</label>
                         <input type="text"
                             class="form-control"
                             name="name"
                             required
-                            placeholder="Name"
+                            placeholder="الإسم"
                             value="{{ old('name', $test->name) }}"
                             id="name"
                         >
@@ -29,10 +29,10 @@
                 </div>
 
                 <div class="box-footer">
-                    <button type="submit" class="btn btn-primary">Update</button>
+                    <button type="submit" class="btn btn-primary">تعديل</button>
 
                     <a href="{{ route('admin.tests.index') }}" class="btn btn-default">
-                        Cancel
+                        إلغاء
                     </a>
                 </div>
             </form>

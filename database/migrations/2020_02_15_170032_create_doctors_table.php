@@ -18,12 +18,10 @@ class CreateDoctorsTable extends Migration
             $table->string('name');
             $table->string('phone')->nullable();
             $table->string('qualification');
-            $table->integer('clink_id')->unsigned()->index();
             $table->integer('specialty_id')->unsigned()->index();
             $table->timestamps();
             $table->softDeletes();
             
-            $table->foreign('clink_id')->references('id')->on('clinks');
             $table->foreign('specialty_id')->references('id')->on('specialties');
         });
     }

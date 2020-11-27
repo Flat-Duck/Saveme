@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Clink;
 use App\Device;
 use App\Clink;
 use Session;
+use Auth;
 use App\Http\Controllers\Controller;
 
 class DeviceController extends Controller
@@ -16,9 +17,8 @@ class DeviceController extends Controller
      */
     public function index()
     {
-        $id = Session::get('clink');
-        $clink = Clink::find($id);
-        
+        $clink = Auth::guard('admin')->user()->clink;
+      
         $devices = $clink->devices;
         
         return view('clink.devices.index', compact('devices'));
@@ -31,8 +31,8 @@ class DeviceController extends Controller
      */
     public function create()
     {
-        //$clinks = Clink::all();
-        $clink = Session::get('clink');
+        $clink = Auth::guard('admin')->user()->clink;
+
 
         return view('clink.devices.add', compact('clink'));
     }

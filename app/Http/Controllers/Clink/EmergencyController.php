@@ -6,6 +6,7 @@ use App\Emergency;
 use App\Clink;
 use App\Http\Controllers\Controller;
 use Session;
+use Auth;
 class EmergencyController extends Controller
 {
     /**
@@ -15,9 +16,8 @@ class EmergencyController extends Controller
      */
     public function index()
     {
-
-         $id = Session::get('clink');
-        $clink = Clink::find($id);
+        $clink = Auth::guard('admin')->user()->clink;
+       
         $emergencies = $clink->emergencies;
 
         return view('clink.emergencies.index', compact('emergencies'));
@@ -30,9 +30,9 @@ class EmergencyController extends Controller
      */
     public function create()
     {
-        $clinks = Clink::all();
+       // $clinks = Clink::all();
 
-        return view('clink.emergencies.add', compact('clinks'));
+        return view('clink.emergencies.add');
     }
 
     /**
@@ -42,6 +42,8 @@ class EmergencyController extends Controller
      */
     public function store()
     {
+        $id = Auth::guard('admin')->user()->clink->id;
+        request()->merge(['clink_id'=>$id]);
         $validatedData = request()->validate(Emergency::validationRules());
 
         $emergency = Emergency::create($validatedData);
@@ -60,9 +62,7 @@ class EmergencyController extends Controller
      */
     public function edit(Emergency $emergency)
     {
-        $clinks = Clink::all();
-
-        return view('clink.emergencies.edit', compact('emergency', 'clinks'));
+        return view('clink.emergencies.edit', compact('emergency'));
     }
 
     /**
@@ -73,6 +73,8 @@ class EmergencyController extends Controller
      */
     public function update(Emergency $emergency)
     {
+        $id = Auth::guard('admin')->user()->clink->id;
+        request()->merge(['clink_id'=>$id]);
         $validatedData = request()->validate(
             Emergency::validationRules($emergency->id)
         );

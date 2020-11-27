@@ -1,6 +1,6 @@
 @extends('clink.layouts.guest')
 
-@section('title', 'Reset Password')
+@section('title', 'Reset كلمة المرور')
 
 @section('content')
     <p class="login-box-msg">Please specify new credentials</p>
@@ -14,7 +14,7 @@
                 name="email"
                 class="form-control"
                 value="{{ $email ?? old('email') }}"
-                placeholder="Email address"
+                placeholder="البريد الإلكتروني"
                 required
                 autofocus
             >
@@ -22,17 +22,17 @@
         </div>
 
         <div class="form-group has-feedback">
-            <input type="password" name="password" class="form-control" placeholder="Password" required>
+            <input type="password" name="password" class="form-control" placeholder="كلمة المرور" required>
             <span class="fa fa-lock form-control-feedback"></span>
         </div>
 
         <div class="form-group has-feedback">
-            <input type="password" name="password_confirmation" class="form-control" placeholder="Confirm Password" required>
+            <input type="password" name="password_confirmation" class="form-control" placeholder="تأكيد كلمة المرور" required>
             <span class="fa fa-lock form-control-feedback"></span>
         </div>
 
         <div class="form-group">
-            <button type="submit" class="btn btn-primary btn-block btn-flat">Reset Password</button>
+            <button type="submit" class="btn btn-primary btn-block btn-flat">Reset كلمة المرور</button>
         </div>
     </form>
 @endsection

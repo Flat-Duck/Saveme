@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,8 +9,10 @@
 
     <link href="{{ mix('/css/admin/vendor.css') }}" rel="stylesheet">
     <link href="{{ mix('/css/admin/app.css') }}" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
 
-    {{-- You can put page wise internal css style in styles section --}}
+    {{-- You can put page wise internal css style in styles section
+    --}}
     @stack('styles')
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -20,21 +23,22 @@
     <![endif]-->
 
     <!-- Google Font -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
 
-<body class="hold-transition skin-blue sidebar-mini">
+<body dir="rtl" class="hold-transition skin-blue sidebar-mini">
     <div class="wrapper">
         {{-- Header --}}
         <header class="main-header">
 
-            {{--  Logo  --}}
+            {{-- Logo --}}
             <a href="{{ route('clink.dashboard') }}" class="logo">
                 <span class="logo-mini">{{ config('app.name') }}</span>
                 <span class="logo-lg">{{ config('app.name') }}</span>
             </a>
 
-            {{--  Header Navbar  --}}
+            {{-- Header Navbar --}}
             <nav class="navbar navbar-static-top" role="navigation">
                 <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
                     <span class="sr-only">Toggle navigation</span>
@@ -42,7 +46,7 @@
 
                 <div class="navbar-custom-menu">
                     <ul class="nav navbar-nav">
-                        {{--  User Account Menu  --}}
+                        {{-- User Account Menu --}}
                         <li class="dropdown user user-menu">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <img src="{{ asset('images/admin-avatar.png') }}" class="user-image" alt="Admin avatar">
@@ -52,7 +56,8 @@
 
                             <ul class="dropdown-menu">
                                 <li class="user-header">
-                                    <img src="{{ asset('images/admin-avatar.png') }}" class="img-circle" alt="Admin avatar">
+                                    <img src="{{ asset('images/admin-avatar.png') }}" class="img-circle"
+                                        alt="Admin avatar">
 
                                     <p>{{ Auth::guard('admin')->user()->name }}</p>
                                 </li>
@@ -60,11 +65,12 @@
                                 <li class="user-footer">
                                     <div class="pull-left">
                                         <a href="{{ route('clink.profile') }}" class="btn btn-default btn-flat">
-                                            Profile
+                                            الملف الشخصي
                                         </a>
                                     </div>
                                     <div class="pull-right">
-                                        <a href="{{ route('clink.logout') }}" class="btn btn-default btn-flat">Sign out</a>
+                                        <a href="{{ route('clink.logout') }}" class="btn btn-default btn-flat">Sign
+                                            out</a>
                                     </div>
                                 </li>
                             </ul>
@@ -75,7 +81,7 @@
         </header>
 
         <aside class="main-sidebar">
-            {{--  Sidebar  --}}
+            {{-- Sidebar --}}
             <section class="sidebar">
 
                 <div class="user-panel">
@@ -88,70 +94,48 @@
                     </div>
                 </div>
 
-                {{--  Sidebar Menu  --}}
+                {{-- Sidebar Menu --}}
                 <ul class="sidebar-menu" data-widget="tree">
                     <li class="header">MENU</li>
 
                     <li {{ $page == 'dashboard' ? ' class=active' : '' }}>
                         <a href="{{ route('clink.dashboard') }}">
                             <i class="fa fa-building"></i>
-                            <span>Dashboard</span>
+                            <span>لوحة التحكم</span>
+                        </a>
+                    </li>
+                    <li {{ $page == 'settings' ? ' class=active' : '' }}>
+                        <a href="{{ route('clink.settings.edit') }}">
+                            <i class="fa fa-arrow-right"></i>
+                            <span>بيانات العيادة</span>
                         </a>
                     </li>
 
-                    {{-- <li {{ $page == 'clink' ? ' class=active' : '' }}>
-                        <a href="{{ route('clink.clinks.index') }}">
+                    
+                    <li {{ $page == 'reactive' ? ' class=active' : '' }}>
+                        <a href="{{ route('clink.reactive') }}">
                             <i class="fa fa-arrow-right"></i>
-                            <span>Clinks</span>
-                        </a>
-                    </li> --}}
-
-                    <li {{ $page == 'device' ? ' class=active' : '' }}>
-                        <a href="{{ route('clink.devices.index') }}">
-                            <i class="fa fa-arrow-right"></i>
-                            <span>Devices</span>
+                            <span>الصفحة التفاعلية</span>
                         </a>
                     </li>
-
-                    {{-- <li {{ $page == 'specialty' ? ' class=active' : '' }}>
-                        <a href="{{ route('clink.specialties.index') }}">
-                            <i class="fa fa-arrow-right"></i>
-                            <span>Specialties</span>
-                        </a>
-                    </li> --}}
-
-                    <li {{ $page == 'doctor' ? ' class=active' : '' }}>
-                        <a href="{{ route('clink.doctors.index') }}">
-                            <i class="fa fa-arrow-right"></i>
-                            <span>Doctors</span>
-                        </a>
-                    </li>
-
-                    <li {{ $page == 'test' ? ' class=active' : '' }}>
-                        <a href="{{ route('clink.tests.index') }}">
-                            <i class="fa fa-arrow-right"></i>
-                            <span>Tests</span>
-                        </a>
-                    </li>
-
                     <li {{ $page == 'service' ? ' class=active' : '' }}>
                         <a href="{{ route('clink.services.index') }}">
                             <i class="fa fa-arrow-right"></i>
-                            <span>Services</span>
+                            <span>الخدمات</span>
                         </a>
                     </li>
 
                     <li {{ $page == 'emergency' ? ' class=active' : '' }}>
                         <a href="{{ route('clink.emergencies.index') }}">
                             <i class="fa fa-arrow-right"></i>
-                            <span>Emergencies</span>
+                            <span>الطوارئ</span>
                         </a>
                     </li>
 
                     <li {{ $page == 'appointment' ? ' class=active' : '' }}>
                         <a href="{{ route('clink.appointments.index') }}">
                             <i class="fa fa-arrow-right"></i>
-                            <span>Appointments</span>
+                            <span>المواعيد</span>
                         </a>
                     </li>
                 </ul>
@@ -160,14 +144,14 @@
 
 
         <div class="content-wrapper">
-            {{--  Page header  --}}
+            {{-- Page header --}}
             <section class="content-header">
                 <h1>
                     @yield('title')
                 </h1>
             </section>
 
-            {{--  Page Content  --}}
+            {{-- Page Content --}}
             <section class="content container-fluid">
                 @if ($errors->all())
                     <ul class="alert alert-danger">
@@ -185,14 +169,24 @@
 
     <script src="{{ mix('/js/admin/vendor.js') }}"></script>
     <script src="{{ mix('/js/admin/app.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
 
     @if (session('message'))
         <script>
             showNotice("{{ session('type') }}", "{{ session('message') }}");
+
         </script>
     @endif
+    <script>
+        $(function() {
+            //Initialize Select2 Elements   
+            $('.select2').select2();
+        });
 
-    {{-- You can put page wise javascript in scripts section --}}
+    </script>
+    {{-- You can put page wise javascript in scripts section
+    --}}
     @stack('scripts')
 </body>
+
 </html>

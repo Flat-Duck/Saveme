@@ -31,7 +31,6 @@ class Device extends Model implements HasMedia
             'name' => 'required|string',
             'description' => 'required|string',
             'picture' => 'nullable|image',
-            'clink_id' => 'required|numeric|exists:clinks,id',
         ];
     }
 
@@ -50,7 +49,7 @@ class Device extends Model implements HasMedia
      */
     public function clink()
     {
-        return $this->belongsTo('App\Clink');
+        return $this->belongsToMany('App\Clink');
     }
 
     /**

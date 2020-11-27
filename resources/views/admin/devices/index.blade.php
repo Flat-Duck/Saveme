@@ -1,40 +1,43 @@
-@extends('admin.layouts.app', ['page' => 'emergency'])
+@extends('admin.layouts.app', ['page' => 'device'])
 
-@section('title', 'Emergencies')
+@section('title', 'الأجهزة')
 
 @section('content')
 <div class="row">
     <div class="col-xs-12">
         <div class="box">
             <div class="box-header with-border">
-                <h3 class="box-title">Emergencies</h3>
+                <h3 class="box-title">الأجهزة</h3>
 
-                <a class="pull-right btn btn-sm btn-primary" href="{{ route('admin.emergencies.create') }}">
-                    Add New
+                <a class="pull-right btn btn-sm btn-primary" href="{{ route('admin.devices.create') }}">
+                    إضافة جديد
                 </a>
             </div>
             <div class="box-body">
                 <table class="table table-bordered">
                     <tr>
                         <th>#</th>
-                        <th>Name</th>
-                        <th>Qualification</th>
-                        <th>Clink</th>
-                        <th>Action</th>
+                        <th>الإسم</th>
+                        <th>الصورة</th>
+                        <th>العمليات</th>
                     </tr>
 
-                    @forelse ($emergencies as $emergency)
+                    @forelse ($devices as $device)
                         <tr>
-                            <td>{{ $emergency->id }}</td>
-                            <td>{{ $emergency->name }}</td>
-                            <td>{{ $emergency->qualification }}</td>
-                            <td>{{ $emergency->clink->name }}</td>
+                            <td>{{ $device->id }}</td>
+                            <td>{{ $device->name }}</td>
                             <td>
-                                <a href="{{ route('admin.emergencies.edit', ['emergency' => $emergency->id]) }}">
+                                <img src="{{ $device->getFirstMediaUrl('picture') }}"
+                                    width="50"
+                                    alt="الصورة "
+                                >
+                            </td>
+                            <td>
+                                <a href="{{ route('admin.devices.edit', ['device' => $device->id]) }}">
                                     <i class="fa fa-pencil-square-o"></i>
                                 </a>
 
-                                <form action="{{ route('admin.emergencies.destroy', ['emergency' => $emergency->id]) }}"
+                                <form action="{{ route('admin.devices.destroy', ['device' => $device->id]) }}"
                                     method="POST"
                                     class="inline pointer"
                                 >
@@ -49,14 +52,14 @@
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="5">No records found</td>
+                            <td colspan="5">لاتوجد سجلات</td>
                         </tr>
                     @endforelse
                 </table>
             </div>
 
             <div class="box-footer clearfix">
-                {{ $emergencies->links('vendor.pagination.default') }}
+                {{ $devices->links('vendor.pagination.default') }}
             </div>
         </div>
     </div>

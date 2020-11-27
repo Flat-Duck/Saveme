@@ -39,7 +39,20 @@ class Service extends Model implements HasMedia
     {
         return $this->belongsToMany('App\Clink');
     }
-
+        /**
+     * Get the clinks for the Service.
+     */
+    public function doctor()
+    {
+        return $this->belongsToMany('App\Doctor','clink_service');
+    }
+    /**
+     * Get the services for the Clink.
+     */
+    public function servers()
+    {
+        return $this->hasMany('App\Server');//
+    }
     /**
      * Returns the paginated list of resources
      *

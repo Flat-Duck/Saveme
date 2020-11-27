@@ -28,10 +28,9 @@ class DoctorController extends Controller
      */
     public function create()
     {
-        $clinks = Clink::all();
         $specialties = Specialty::all();
 
-        return view('admin.doctors.add', compact('clinks', 'specialties'));
+        return view('admin.doctors.add', compact('specialties'));
     }
 
     /**
@@ -62,10 +61,9 @@ class DoctorController extends Controller
      */
     public function edit(Doctor $doctor)
     {
-        $clinks = Clink::all();
         $specialties = Specialty::all();
 
-        return view('admin.doctors.edit', compact('doctor', 'clinks', 'specialties'));
+        return view('admin.doctors.edit', compact('doctor', 'specialties'));
     }
 
     /**

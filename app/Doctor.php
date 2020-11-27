@@ -17,7 +17,7 @@ class Doctor extends Model implements HasMedia
      * @var array
      */
     protected $fillable = [
-        'name', 'phone', 'qualification', 'picture', 'clink_id', 'specialty_id'
+        'name', 'phone', 'qualification', 'picture', 'specialty_id'
     ];
 
     protected $appends = array('specialty_name');
@@ -33,7 +33,6 @@ class Doctor extends Model implements HasMedia
             'phone' => 'nullable|string',
             'qualification' => 'required|string',
             'picture' => 'required|image',
-            'clink_id' => 'required|numeric|exists:clinks,id',
             'specialty_id' => 'required|numeric|exists:specialties,id',
         ];
     }
@@ -55,7 +54,13 @@ class Doctor extends Model implements HasMedia
     {
         return $this->belongsTo('App\Clink');
     }
-
+    /**
+     * Get the services for the Clink.
+     */
+    public function servers()
+    {
+        return $this->hasMany('App\Server');//
+    }
         /**
      * Get the clinks for the Doctor.
      */
@@ -92,6 +97,6 @@ class Doctor extends Model implements HasMedia
      **/
     public static function getList()
     {
-        return static::with(['clink', 'specialty', 'media'])->paginate(10);
+        return static::with(['specialty', 'media'])->paginate(10);
     }
 }

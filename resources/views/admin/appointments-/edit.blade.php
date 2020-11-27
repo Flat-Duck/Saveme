@@ -1,13 +1,13 @@
 @extends('admin.layouts.app', ['page' => 'appointment'])
 
-@section('title', 'Edit Appointment')
+@section('title', 'تعديل الموعد')
 
 @section('content')
 <div class="row">
     <div class="col-xs-12">
         <div class="box box-primary">
             <div class="box-header with-border">
-                <h3 class="box-title">Edit Appointment</h3>
+                <h3 class="box-title">تعديل الموعد</h3>
             </div>
 
             <form role="form" method="POST" action="{{ route('admin.appointments.update', ['appointment' => $appointment->id]) }}">
@@ -42,7 +42,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="clink-id">Clink</label>
+                        <label for="clink-id">العيادة</label>
                         <select class="form-control"
                             name="clink_id"
                             required
@@ -59,7 +59,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="doctor-id">Doctor</label>
+                        <label for="doctor-id">الطبيب</label>
                         <select class="form-control"
                             name="doctor_id"
                             required
@@ -77,10 +77,10 @@
                 </div>
 
                 <div class="box-footer">
-                    <button type="submit" class="btn btn-primary">Update</button>
+                    <button type="submit" class="btn btn-primary">تعديل</button>
 
                     <a href="{{ route('admin.appointments.index') }}" class="btn btn-default">
-                        Cancel
+                        إلغاء
                     </a>
                 </div>
             </form>

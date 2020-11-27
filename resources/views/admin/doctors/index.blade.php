@@ -1,28 +1,27 @@
 @extends('admin.layouts.app', ['page' => 'doctor'])
 
-@section('title', 'Doctors')
+@section('title', 'الأطباء')
 
 @section('content')
 <div class="row">
     <div class="col-xs-12">
         <div class="box">
             <div class="box-header with-border">
-                <h3 class="box-title">Doctors</h3>
+                <h3 class="box-title">الأطباء</h3>
 
                 <a class="pull-right btn btn-sm btn-primary" href="{{ route('admin.doctors.create') }}">
-                    Add New
+                    إضافة جديد
                 </a>
             </div>
             <div class="box-body">
                 <table class="table table-bordered">
                     <tr>
                         <th>#</th>
-                        <th>Name</th>
-                        <th>Phone</th>
-                        <th>Qualification</th>
-                        <th>Picture</th>
-                        <th>Clink</th>
-                        <th>Action</th>
+                        <th>الإسم</th>
+                        <th>رقم الهاتف</th>
+                        <th>المؤهل</th>
+                        <th>الصورة</th>
+                        <th>العمليات</th>
                     </tr>
 
                     @forelse ($doctors as $doctor)
@@ -34,10 +33,9 @@
                             <td>
                                 <img src="{{ $doctor->getFirstMediaUrl('picture') }}"
                                     width="50"
-                                    alt="Picture image"
+                                    alt="الصورة "
                                 >
                             </td>
-                            <td>{{ $doctor->clink->name }}</td>
                             <td>
                                 <a href="{{ route('admin.doctors.edit', ['doctor' => $doctor->id]) }}">
                                     <i class="fa fa-pencil-square-o"></i>
@@ -58,7 +56,7 @@
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="7">No records found</td>
+                            <td colspan="7">لاتوجد سجلات</td>
                         </tr>
                     @endforelse
                 </table>

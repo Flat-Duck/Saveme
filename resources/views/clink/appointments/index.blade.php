@@ -1,27 +1,27 @@
 @extends('clink.layouts.app', ['page' => 'appointment'])
 
-@section('title', 'Appointments')
+@section('title', 'المواعيد')
 
 @section('content')
 <div class="row">
     <div class="col-xs-12">
         <div class="box">
             <div class="box-header with-border">
-                <h3 class="box-title">Appointments</h3>
+                <h3 class="box-title">المواعيد</h3>
 
                 <a class="pull-right btn btn-sm btn-primary" href="{{ route('clink.appointments.create') }}">
-                    Add New
+                    إضافة جديد
                 </a>
             </div>
             <div class="box-body">
                 <table class="table table-bordered">
                     <tr>
                         <th>#</th>
-                        <th>Day</th>
-                        <th>Start Time</th>
-                        <th>Finish Time</th>
-                        <th>Doctor</th>
-                        <th>Action</th>
+                        <th>اليوم</th>
+                        <th>بداية الموعد</th>
+                        <th>نهاية الموعد</th>
+                        <th>الطبيب</th>
+                        <th>العمليات</th>
                     </tr>
 
                     @forelse ($appointments as $appointment)
@@ -51,7 +51,7 @@
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="5">No records found</td>
+                            <td colspan="5">لاتوجد سجلات</td>
                         </tr>
                     @endforelse
                 </table>

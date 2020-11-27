@@ -1,30 +1,32 @@
 @extends('clink.layouts.app', ['page' => 'service'])
 
-@section('title', 'Services')
+@section('title', 'الخدمات')
 
 @section('content')
 <div class="row">
     <div class="col-xs-12">
         <div class="box">
             <div class="box-header with-border">
-                <h3 class="box-title">Services</h3>
+                <h3 class="box-title">الخدمات</h3>
 
                 <a class="pull-right btn btn-sm btn-primary" href="{{ route('clink.services.create') }}">
-                    Add New
+                    إضافة جديد
                 </a>
             </div>
             <div class="box-body">
                 <table class="table table-bordered">
                     <tr>
                         <th>#</th>
-                        <th>Name</th>
-                        <th>Action</th>
+                        <th>اسم الخدمة</th>
+                        <th>اسم الطبيب</th>
+                        <th>العمليات</th>
                     </tr>
 
-                    @forelse ($services as $service)
+                    @forelse ($services as $k=> $service)
                         <tr>
-                            <td>{{ $service->id }}</td>
-                            <td>{{ $service->name }}</td>
+                            <td>{{ $k +1}}</td>
+                            <td>{{ $service->service->name }}</td>
+                            <td>{{ $service->doctor->name  }}</td>
                             <td>
                                 <a href="{{ route('clink.services.edit', ['service' => $service->id]) }}">
                                     <i class="fa fa-pencil-square-o"></i>
@@ -45,7 +47,7 @@
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="3">No records found</td>
+                            <td colspan="3">لاتوجد سجلات</td>
                         </tr>
                     @endforelse
                 </table>

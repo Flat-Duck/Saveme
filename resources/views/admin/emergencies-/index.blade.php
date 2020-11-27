@@ -1,40 +1,40 @@
-@extends('admin.layouts.app', ['page' => 'appointment'])
+@extends('admin.layouts.app', ['page' => 'emergency'])
 
-@section('title', 'Appointments')
+@section('title', 'Emergencies')
 
 @section('content')
 <div class="row">
     <div class="col-xs-12">
         <div class="box">
             <div class="box-header with-border">
-                <h3 class="box-title">Appointments</h3>
+                <h3 class="box-title">Emergencies</h3>
 
-                <a class="pull-right btn btn-sm btn-primary" href="{{ route('admin.appointments.create') }}">
-                    Add New
+                <a class="pull-right btn btn-sm btn-primary" href="{{ route('admin.emergencies.create') }}">
+                    إضافة جديد
                 </a>
             </div>
             <div class="box-body">
                 <table class="table table-bordered">
                     <tr>
                         <th>#</th>
-                        <th>Start Time</th>
-                        <th>Finish Time</th>
-                        <th>Clink</th>
-                        <th>Action</th>
+                        <th>الإسم</th>
+                        <th>المؤهل</th>
+                        <th>العيادة</th>
+                        <th>العمليات</th>
                     </tr>
 
-                    @forelse ($appointments as $appointment)
+                    @forelse ($emergencies as $emergency)
                         <tr>
-                            <td>{{ $appointment->id }}</td>
-                            <td>{{ $appointment->start_time }}</td>
-                            <td>{{ $appointment->finish_time }}</td>
-                            <td>{{ $appointment->clink->name }}</td>
+                            <td>{{ $emergency->id }}</td>
+                            <td>{{ $emergency->name }}</td>
+                            <td>{{ $emergency->qualification }}</td>
+                            <td>{{ $emergency->clink->name }}</td>
                             <td>
-                                <a href="{{ route('admin.appointments.edit', ['appointment' => $appointment->id]) }}">
+                                <a href="{{ route('admin.emergencies.edit', ['emergency' => $emergency->id]) }}">
                                     <i class="fa fa-pencil-square-o"></i>
                                 </a>
 
-                                <form action="{{ route('admin.appointments.destroy', ['appointment' => $appointment->id]) }}"
+                                <form action="{{ route('admin.emergencies.destroy', ['emergency' => $emergency->id]) }}"
                                     method="POST"
                                     class="inline pointer"
                                 >
@@ -49,14 +49,14 @@
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="5">No records found</td>
+                            <td colspan="5">لاتوجد سجلات</td>
                         </tr>
                     @endforelse
                 </table>
             </div>
 
             <div class="box-footer clearfix">
-                {{ $appointments->links('vendor.pagination.default') }}
+                {{ $emergencies->links('vendor.pagination.default') }}
             </div>
         </div>
     </div>

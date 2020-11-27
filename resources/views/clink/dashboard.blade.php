@@ -4,6 +4,6 @@
 
 @section('content')
     <p>
-        Clink Dashboard
+        العيادة Dashboard
     </p>
 @endsection

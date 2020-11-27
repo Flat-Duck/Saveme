@@ -6,7 +6,7 @@ use App\Clink;
 use App\Specialty;
 use App\Test;
 use App\Service;
-use Session;
+use Auth;
 use App\Http\Controllers\Controller;
 
 class ClinkController extends Controller
@@ -67,16 +67,16 @@ class ClinkController extends Controller
      * @param \App\Clink $clink
      * @return \Illuminate\Http\Response
      */
-    public function edit(Clink $clink)
-    {
+    public function edit()
+    { 
+        
+        $clink = Auth::guard('admin')->user()->clink;
 
-       // $id = Session::get('clink');
-       // $clink = Clink::find($id);
         $specialties = Specialty::all();
         $tests = Test::all();
         $services = Service::all();
 
-      //  dd($clink);
+    
         $clink->specialties = $clink->specialties->pluck('id')->toArray();
         $clink->tests = $clink->tests->pluck('id')->toArray();
         $clink->services = $clink->services->pluck('id')->toArray();
@@ -105,7 +105,7 @@ class ClinkController extends Controller
         $clink->tests()->sync(request('tests'));
         $clink->services()->sync(request('services'));
 
-        return redirect()->route('clink.clinks.index')->with([
+        return redirect()->back()->with([
             'type' => 'success',
             'message' => 'Clink Updated'
         ]);

@@ -114,18 +114,11 @@ class ClinkController extends Controller
      */
     public function destroy(Clink $clink)
     {
-        if ($clink->devices()->count() || $clink->specialties()->count() || $clink->doctors()->count() || $clink->tests()->count() || $clink->services()->count() || $clink->emergencies()->count() || $clink->appointments()->count()) {
-            return redirect()->route('admin.clinks.index')->with([
-                'type' => 'error',
-                'message' => 'This record cannot be deleted as there are relationship dependencies.'
-            ]);
-        }
-
-        $clink->delete();
+        $clink->toggleActiv();
 
         return redirect()->route('admin.clinks.index')->with([
             'type' => 'success',
-            'message' => 'Clink deleted successfully'
+            'message' => 'Clink Status changed'
         ]);
     }
 }

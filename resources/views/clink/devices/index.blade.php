@@ -1,25 +1,25 @@
 @extends('clink.layouts.app', ['page' => 'device'])
 
-@section('title', 'Devices')
+@section('title', 'الأجهزة')
 
 @section('content')
 <div class="row">
     <div class="col-xs-12">
         <div class="box">
             <div class="box-header with-border">
-                <h3 class="box-title">Devices</h3>
+                <h3 class="box-title">الأجهزة</h3>
 
                 <a class="pull-right btn btn-sm btn-primary" href="{{ route('clink.devices.create') }}">
-                    Add New
+                    إضافة جديد
                 </a>
             </div>
             <div class="box-body">
                 <table class="table table-bordered">
                     <tr>
                         <th>#</th>
-                        <th>Name</th>
-                        <th>Picture</th>
-                        <th>Action</th>
+                        <th>الإسم</th>
+                        <th>الصورة</th>
+                        <th>العمليات</th>
                     </tr>
 
                     @forelse ($devices as $device)
@@ -29,7 +29,7 @@
                             <td>
                                 <img src="{{ $device->getFirstMediaUrl('picture') }}"
                                     width="50"
-                                    alt="Picture image"
+                                    alt="الصورة "
                                 >
                             </td>
                             <td>
@@ -52,7 +52,7 @@
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="5">No records found</td>
+                            <td colspan="5">لاتوجد سجلات</td>
                         </tr>
                     @endforelse
                 </table>

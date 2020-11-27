@@ -61,7 +61,7 @@ class Clink extends Model implements HasMedia
      */
     public function devices()
     {
-        return $this->hasMany('App\Device');
+        return $this->belongsToMany('App\Device');
     }
 
     // /**
@@ -116,7 +116,22 @@ class Clink extends Model implements HasMedia
      */
     public function services()
     {
-        return $this->belongsToMany('App\Service');
+        return $this->belongsToMany('App\Service')->withPivot('doctor_id');
+    }
+
+
+        /**
+     * Get the services for the Clink.
+     */
+    public function servers()
+    {
+        return $this->hasMany('App\Server');//
+    }
+
+    public function toggleActiv()
+    {
+         $this->status = !$this->status;
+         return $this->save();
     }
 
     /**

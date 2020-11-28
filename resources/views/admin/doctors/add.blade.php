@@ -55,7 +55,7 @@
                         <input type="file"
                             class="form-control"
                             name="picture"
-                            required
+                            
                             value="{{ old('picture') }}"
                             id="picture"
                         >

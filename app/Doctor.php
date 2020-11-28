@@ -32,7 +32,7 @@ class Doctor extends Model implements HasMedia
             'name' => 'required|string',
             'phone' => 'nullable|string',
             'qualification' => 'required|string',
-            'picture' => 'required|image',
+            // 'picture' => 'required|image',
             'specialty_id' => 'required|numeric|exists:specialties,id',
         ];
     }

@@ -36,6 +36,12 @@
                         </div>
 
                         <div class="form-group">
+                            <label for="email"> البريد الالكتروني</label>
+                            <input type="email" class="form-control" name="email" required placeholder="البريد الالكتروني "
+                                value="{{ old('email') }}" id="email">
+                        </div>
+
+                        <div class="form-group">
                             <label for="latitude">إحداثيات الطول</label>
                             <input type="number" class="form-control" name="latitude" required placeholder="إحداثيات الطول"
                                 value="{{ old('latitude') }}" step="any" id="latitude">

@@ -78,7 +78,7 @@
                         <img src="{{ $clink->getFirstMediaUrl('cover') }}" width="50" alt="الصورة">
                         <div class="form-group">
                             <label for="cover">الصورة</label>
-                            <input type="file" class="form-control" name="cover" required
+                            <input type="file" class="form-control" name="cover" 
                                 value="{{ old('cover', $clink->cover) }}" id="cover">
                         </div>
 

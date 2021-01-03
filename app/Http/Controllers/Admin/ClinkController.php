@@ -7,7 +7,8 @@ use App\Specialty;
 use App\Test;
 use App\Service;
 use App\Http\Controllers\Controller;
-
+use App\Admin;
+use Str;
 class ClinkController extends Controller
 {
     /**
@@ -48,13 +49,16 @@ class ClinkController extends Controller
         unset($validatedData['cover'], $validatedData['specialties'], $validatedData['tests'], $validatedData['services']);
         $clink = Clink::create($validatedData);
 
-      //  $clink->addMediaFromRequest('cover')->toMediaCollection('cover');
+       $admin = new Admin(); 
+       $admin->name = request()->name;
+       $admin->email = request()->email;
+       $admin->username = request()->name;
+       $admin->password =  bcrypt('password');
+       $admin->remember_token = Str::random(10);
+        $admin->clink_id = $clink->id;
+        $admin->save();
 
-        //$clink->specialties()->sync(request('specialties'));
-       // $clink->tests()->sync(request('tests'));
-       // $clink->services()->sync(request('services'));
-
-        return redirect()->route('admin.clinks.index')->with([
+       return redirect()->route('admin.clinks.index')->with([
             'type' => 'success',
             'message' => 'Clink added'
         ]);

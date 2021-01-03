@@ -10,7 +10,7 @@ class ClinkController extends ApiController
 {
     public function index()
     {
-        $clinks = Clink::all();
+        $clinks = Clink::where('active',true)->get();
         return $this->sendResponse("All Clinks Loaded",$clinks);    
     }
     public function show(Clink $clink)

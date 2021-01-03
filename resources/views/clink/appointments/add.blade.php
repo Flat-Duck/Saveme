@@ -23,6 +23,7 @@
                             placeholder="بداية الموعد"
                             value="{{ old('start_time') }}"
                             step="2"
+                            min="09:00" max="18:00"
                             id="start_time"
                         >
                     </div>

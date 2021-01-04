@@ -17,6 +17,8 @@ class Appointment extends Model
     protected $fillable = [
         'start_time', 'finish_time', 'clink_id', 'doctor_id','day'
     ];
+    protected $appends = ['name'];
+
 
     /**
      * Validation rules
@@ -50,6 +52,9 @@ class Appointment extends Model
         return $this->belongsTo('App\Doctor');
     }
 
+    public function getNameAttribute(){
+        return $this->doctor->name;
+    }
     /**
      * Returns the paginated list of resources
      *

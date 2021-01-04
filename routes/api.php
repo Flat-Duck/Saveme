@@ -45,6 +45,10 @@ Route::name("api.")->namespace('API')->group(function () {
         Route::get('/','DeviceController@index');
         Route::get('/{device}/clinks','DeviceController@clinks');
      });
+     Route::name("specialties.")->prefix('specialties')->group(function () {
+        Route::get('/','SpecialtyController@index');
+        Route::get('/{Specialty}/clinks','DeviceController@clinks');
+     });
 
      Route::get('/connection_check','HelperController@connection');
      Route::get('/update_check','HelperController@timeStamp');

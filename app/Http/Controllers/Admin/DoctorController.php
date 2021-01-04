@@ -74,15 +74,16 @@ class DoctorController extends Controller
      */
     public function update(Doctor $doctor)
     {
+        //dd(request()->all());
         $validatedData = request()->validate(
             Doctor::validationRules($doctor->id)
         );
 
         unset($validatedData['picture']);
         $doctor->update($validatedData);
-
-        $doctor->addMediaFromRequest('picture')->toMediaCollection('picture');
-
+        if (request()->has('picture')) {
+            $doctor->addMediaFromRequest('picture')->toMediaCollection('picture');
+        }
         return redirect()->route('admin.doctors.index')->with([
             'type' => 'success',
             'message' => 'Doctor Updated'

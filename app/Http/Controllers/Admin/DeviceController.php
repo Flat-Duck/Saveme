@@ -43,9 +43,9 @@ class DeviceController extends Controller
 
         unset($validatedData['picture']);
         $device = Device::create($validatedData);
-
-        $device->addMediaFromRequest('picture')->toMediaCollection('picture');
-
+        if (request()->has('picture')) {
+            $device->addMediaFromRequest('picture')->toMediaCollection('picture');
+        }
         return redirect()->route('admin.devices.index')->with([
             'type' => 'success',
             'message' => 'Device added'

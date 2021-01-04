@@ -46,7 +46,7 @@ class ClinkController extends Controller
     {
         $validatedData = request()->validate(Clink::validationRules());
 
-      //  unset($validatedData['cover'], $validatedData['specialties'], $validatedData['tests'], $validatedData['services']);
+        unset($validatedData['cover'], $validatedData['specialties'], $validatedData['tests'], $validatedData['services']);
         $clink = Clink::create($validatedData);
 
        $admin = new Admin(); 
@@ -95,14 +95,17 @@ class ClinkController extends Controller
             Clink::validationRules($clink->id)
         );
 
-      //  unset($validatedData['cover'], $validatedData['specialties'], $validatedData['tests'], $validatedData['services']);
+        unset($validatedData['cover'], $validatedData['specialties'], $validatedData['tests'], $validatedData['services']);
       
         $clink->update($validatedData);
 
+        if (request()->has('cover')) {
+            $clink->addMediaFromRequest('cover')->toMediaCollection('cover');
+        }
       
-        //$clink->specialties()->sync(request('specialties'));
-       // $clink->tests()->sync(request('tests'));
-       // $clink->services()->sync(request('services'));
+        $clink->specialties()->sync(request('specialties'));
+        $clink->tests()->sync(request('tests'));
+        $clink->services()->sync(request('services'));
 
         return redirect()->route('admin.clinks.index')->with([
             'type' => 'success',

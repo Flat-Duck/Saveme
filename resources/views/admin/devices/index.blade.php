@@ -22,9 +22,9 @@
                         <th>العمليات</th>
                     </tr>
 
-                    @forelse ($devices as $device)
+                    @forelse ($devices as $k=> $device)
                         <tr>
-                            <td>{{ $device->id }}</td>
+                            <td>{{ $k+1 }}</td>
                             <td>{{ $device->name }}</td>
                             <td>
                                 <img src="{{ $device->getFirstMediaUrl('picture') }}"

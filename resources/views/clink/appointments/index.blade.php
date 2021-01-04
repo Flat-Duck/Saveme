@@ -24,9 +24,9 @@
                         <th>العمليات</th>
                     </tr>
 
-                    @forelse ($appointments as $appointment)
+                    @forelse ($appointments as $k=> $appointment)
                         <tr>
-                            <td>{{ $appointment->id }}</td>
+                            <td>{{ $k+1 }}</td>
                             <td>{{ $appointment->day }}</td>
                             <td>{{ $appointment->start_time }}</td>
                             <td>{{ $appointment->finish_time }}</td>

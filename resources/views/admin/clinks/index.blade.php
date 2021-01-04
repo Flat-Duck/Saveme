@@ -25,9 +25,9 @@
                         <th>العمليات</th>
                     </tr>
 
-                    @forelse ($clinks as $clink)
+                    @forelse ($clinks as $k=> $clink)
                         <tr>
-                            <td>{{ $clink->id }}</td>
+                            <td>{{ $k+1 }}</td>
                             <td>{{ $clink->name }}</td>
                             <td>{{ $clink->phone_number }}</td>
                             <td>{{ $clink->latitude }}</td>

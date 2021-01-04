@@ -106,14 +106,14 @@
 
                     <li {{ $page == 'clink' ? ' class=active' : '' }}>
                         <a href="{{ route('admin.clinks.index') }}">
-                            <i class="fa fa-arrow-right"></i>
+                            <i class="fa fa-hospital-o"></i>
                             <span>العيادات</span>
                         </a>
                     </li>
 
                     <li {{ $page == 'device' ? ' class=active' : '' }}>
                         <a href="{{ route('admin.devices.index') }}">
-                            <i class="fa fa-arrow-right"></i>
+                            <i class="fa fa-desktop"></i>
                             <span>الأجهزة</span>
                         </a>
                     </li>
@@ -127,7 +127,7 @@
 
                     <li {{ $page == 'doctor' ? ' class=active' : '' }}>
                         <a href="{{ route('admin.doctors.index') }}">
-                            <i class="fa fa-arrow-right"></i>
+                            <i class="fa fa-user-md"></i>
                             <span>الأطباء</span>
                         </a>
                     </li>

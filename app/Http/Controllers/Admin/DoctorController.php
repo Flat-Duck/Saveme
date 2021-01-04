@@ -80,10 +80,13 @@ class DoctorController extends Controller
         );
 
         unset($validatedData['picture']);
+
         $doctor->update($validatedData);
+        
         if (request()->has('picture')) {
             $doctor->addMediaFromRequest('picture')->toMediaCollection('picture');
         }
+
         return redirect()->route('admin.doctors.index')->with([
             'type' => 'success',
             'message' => 'Doctor Updated'

@@ -42,7 +42,9 @@ class DeviceController extends Controller
         $validatedData = request()->validate(Device::validationRules());
 
         unset($validatedData['picture']);
+
         $device = Device::create($validatedData);
+
         if (request()->has('picture')) {
             $device->addMediaFromRequest('picture')->toMediaCollection('picture');
         }
@@ -80,7 +82,9 @@ class DeviceController extends Controller
         unset($validatedData['picture']);
         $device->update($validatedData);
 
-        $device->addMediaFromRequest('picture')->toMediaCollection('picture');
+        if (request()->has('picture')) {
+            $device->addMediaFromRequest('picture')->toMediaCollection('picture');
+        }
 
         return redirect()->route('admin.devices.index')->with([
             'type' => 'success',

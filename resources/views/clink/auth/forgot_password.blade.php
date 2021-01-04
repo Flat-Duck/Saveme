@@ -5,11 +5,11 @@
 @section('content')
     @if (session('status'))
         <div class="alert alert-success">
-            {{ session('status') }}
+          تم ارسال رسالة تعيين كلمة  المرور تحتوي علي رابط اعادة التعيين
         </div>
     @endif
 
-    <p class="login-box-msg">Please specify your email address</p>
+    <p class="login-box-msg">الرجاء ادخال بريدك الالكتروني</p>
 
     <form method="post">
         @csrf
@@ -20,11 +20,11 @@
         </div>
 
         <div class="form-group">
-            <button type="submit" class="btn btn-primary btn-block btn-flat">Send كلمة المرور Reset Link</button>
+            <button type="submit" class="btn btn-primary btn-block btn-flat">  ارسال رسالة اعادة ظبط كلمة المرور </button>
         </div>
     </form>
 
     <a href="{{ route('clink.login') }}">
-        Login
+        تسجيل دخول
     </a>
 @endsection

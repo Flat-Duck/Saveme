@@ -21,9 +21,9 @@
                         <th>العمليات</th>
                     </tr>
 
-                    @forelse ($specialties as $specialty)
+                    @forelse ($specialties as $k=> $specialty)
                         <tr>
-                            <td>{{ $specialty->id }}</td>
+                            <td>{{ $k+1 }}</td>
                             <td>{{ $specialty->name }}</td>
                             <td>
                                 <a href="{{ route('admin.specialties.edit', ['specialty' => $specialty->id]) }}">

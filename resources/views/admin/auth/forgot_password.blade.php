@@ -5,7 +5,7 @@
 @section('content')
     @if (session('status'))
         <div class="alert alert-success">
-            {{ session('status') }}
+            تم ارسال رسالة تعيين كلمة  المرور تحتوي علي رابط اعادة التعيين
         </div>
     @endif
 

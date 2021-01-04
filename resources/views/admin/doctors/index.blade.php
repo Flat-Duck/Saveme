@@ -24,9 +24,9 @@
                         <th>العمليات</th>
                     </tr>
 
-                    @forelse ($doctors as $doctor)
+                    @forelse ($doctors as $k=> $doctor)
                         <tr>
-                            <td>{{ $doctor->id }}</td>
+                            <td>{{ $k+1 }}</td>
                             <td>{{ $doctor->name }}</td>
                             <td>{{ $doctor->phone }}</td>
                             <td>{{ $doctor->qualification }}</td>

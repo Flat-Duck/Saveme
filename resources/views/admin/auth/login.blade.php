@@ -19,13 +19,7 @@
         </div>
 
         <div class="row">
-            <div class="col-xs-8">
-                <div class="checkbox">
-                    <label>
-                        <input type="checkbox" name="remember"> تذكرني
-                    </label>
-                </div>
-            </div>
+            
 
             <div class="col-xs-4">
                 <button type="submit" class="btn btn-primary btn-block btn-flat">تسجيل دخول</button>

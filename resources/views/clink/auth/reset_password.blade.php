@@ -3,7 +3,7 @@
 @section('title', 'Reset كلمة المرور')
 
 @section('content')
-    <p class="login-box-msg">Please specify new credentials</p>
+    <p class="login-box-msg">الرجاء ادخال كلمة المرور الجديدة</p>
 
     <form method="post" action="{{ route('clink.reset_password') }}">
         @csrf
@@ -32,7 +32,7 @@
         </div>
 
         <div class="form-group">
-            <button type="submit" class="btn btn-primary btn-block btn-flat">Reset كلمة المرور</button>
+            <button type="submit" class="btn btn-primary btn-block btn-flat">اعادة تعيين كلمة المرور</button>
         </div>
     </form>
 @endsection

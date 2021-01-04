@@ -35,7 +35,7 @@
                             <div class="inner">
                                 <h3>{{ App\Admin::whereNotNull('clink_id')->get()->count() }}</h3>
 
-                                <h2>عدد المستخدمين</h2>
+                                <h2>عدد مستخدمين العيادات</h2>
                             </div>
                             <div class="icon">
                                 <i class="fa fa-users"></i>

@@ -21,9 +21,9 @@
                         <th>العمليات</th>
                     </tr>
 
-                    @forelse ($tests as $test)
+                    @forelse ($tests as $k=> $test)
                         <tr>
-                            <td>{{ $test->id }}</td>
+                            <td>{{ $k+1 }}</td>
                             <td>{{ $test->name }}</td>
                             <td>
                                 <a href="{{ route('admin.tests.edit', ['test' => $test->id]) }}">

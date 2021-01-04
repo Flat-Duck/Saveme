@@ -120,7 +120,7 @@
 
                     <li {{ $page == 'specialty' ? ' class=active' : '' }}>
                         <a href="{{ route('admin.specialties.index') }}">
-                            <i class="fa fa-arrow-right"></i>
+                            <i class="fa fa-cubes"></i>
                             <span>التخصصات</span>
                         </a>
                     </li>
@@ -134,14 +134,14 @@
 
                     <li {{ $page == 'test' ? ' class=active' : '' }}>
                         <a href="{{ route('admin.tests.index') }}">
-                            <i class="fa fa-arrow-right"></i>
+                            <i class="fa fa-flask"></i>
                             <span>التحاليل</span>
                         </a>
                     </li>
 
                     <li {{ $page == 'service' ? ' class=active' : '' }}>
                         <a href="{{ route('admin.services.index') }}">
-                            <i class="fa fa-arrow-right"></i>
+                            <i class="fa fa-star-o"></i>
                             <span>الخدمات</span>
                         </a>
                     </li>

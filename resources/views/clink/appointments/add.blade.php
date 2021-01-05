@@ -17,7 +17,7 @@
                     <div class="form-group">
                         <label for="start_time">بداية الموعد</label>
                         <input type="time"
-                            min="09:00" max="18:00" required
+                            required
                             class="form-control"
                             name="start_time"
                             value="{{ old('start_time') }}"

@@ -69,8 +69,7 @@
                                         </a>
                                     </div>
                                     <div class="pull-right">
-                                        <a href="{{ route('clink.logout') }}" class="btn btn-default btn-flat">Sign
-                                            out</a>
+                                        <a href="{{ route('clink.logout') }}" class="btn btn-default btn-flat">تسجيل خروج</a>
                                     </div>
                                 </li>
                             </ul>
@@ -96,7 +95,7 @@
 
                 {{-- Sidebar Menu --}}
                 <ul class="sidebar-menu" data-widget="tree">
-                    <li class="header">MENU</li>
+                    <li class="header">القائمة</li>
 
                     <li {{ $page == 'dashboard' ? ' class=active' : '' }}>
                         <a href="{{ route('clink.dashboard') }}">
@@ -106,7 +105,7 @@
                     </li>
                     <li {{ $page == 'settings' ? ' class=active' : '' }}>
                         <a href="{{ route('clink.settings.edit') }}">
-                            <i class="fa fa-arrow-right"></i>
+                            <i class="fa fa-hospital-o"></i>
                             <span>بيانات العيادة</span>
                         </a>
                     </li>
@@ -114,27 +113,29 @@
                     
                     <li {{ $page == 'reactive' ? ' class=active' : '' }}>
                         <a href="{{ route('clink.reactive') }}">
-                            <i class="fa fa-arrow-right"></i>
+                            <i class="fa fa-cogs"></i>
                             <span>الصفحة التفاعلية</span>
                         </a>
                     </li>
                     <li {{ $page == 'service' ? ' class=active' : '' }}>
                         <a href="{{ route('clink.services.index') }}">
-                            <i class="fa fa-arrow-right"></i>
+                            <i class="fa fa-star-o"></i>
                             <span>الخدمات</span>
                         </a>
                     </li>
 
                     <li {{ $page == 'emergency' ? ' class=active' : '' }}>
                         <a href="{{ route('clink.emergencies.index') }}">
-                            <i class="fa fa-arrow-right"></i>
+                            
+                            <i class="fa fa-ambulance"></i>
                             <span>الطوارئ</span>
                         </a>
                     </li>
 
                     <li {{ $page == 'appointment' ? ' class=active' : '' }}>
                         <a href="{{ route('clink.appointments.index') }}">
-                            <i class="fa fa-arrow-right"></i>
+                            <i class="fa fa-calendar"></i>
+                            
                             <span>المواعيد</span>
                         </a>
                     </li>

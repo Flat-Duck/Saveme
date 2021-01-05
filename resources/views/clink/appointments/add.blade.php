@@ -17,13 +17,10 @@
                     <div class="form-group">
                         <label for="start_time">بداية الموعد</label>
                         <input type="time"
+                            min="09:00" max="18:00" required
                             class="form-control"
                             name="start_time"
-                            required
-                            placeholder="بداية الموعد"
                             value="{{ old('start_time') }}"
-                            step="2"
-                            min="09:00" max="18:00"
                             id="start_time"
                         >
                     </div>
@@ -36,7 +33,6 @@
                             required
                             placeholder="نهاية الموعد"
                             value="{{ old('finish_time') }}"
-                            step="2"
                             id="finish_time"
                         >
                     </div>

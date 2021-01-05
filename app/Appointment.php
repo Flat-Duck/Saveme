@@ -28,8 +28,8 @@ class Appointment extends Model
     public static function validationRules()
     {
         return [
-            'start_time' => 'required|date_format:H:i:s',
-            'finish_time' => 'required|date_format:H:i:s',
+            'start_time' => 'required',
+            'finish_time' => 'required',
             'clink_id' => 'required|numeric|exists:clinks,id',
             'day' => 'required|string',
             'doctor_id' => 'required|numeric|exists:doctors,id',

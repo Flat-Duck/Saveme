@@ -1,20 +1,19 @@
-@extends('clink.layouts.app', ['page' => 'admins'])
+@extends('admin.layouts.app', ['page' => 'admins'])
 
-@section('title', 'تعديل المستخدم')
+@section('title', 'إضافة مستخدم جديد')
 
 @section('content')
 <div class="row">
     <div class="col-xs-12">
         <div class="box box-primary">
             <div class="box-header with-border">
-                <h3 class="box-title">تعديل المستخدم</h3>
+                <h3 class="box-title">إضافة مستخدم جديد</h3>
             </div>
 
-            <form role="form" method="POST" action="{{ route('clink.admins.update', ['admin' => $admin->id]) }}">
+            <form role="form" method="POST" action="{{ route('admin.admins.store') }}">
                 @csrf
-                @method('PUT')
 
-                 <div class="box-body">
+                <div class="box-body">
                     <div class="form-group">
                         <label for="name">الاسم</label>
                         <input type="text"
@@ -22,7 +21,7 @@
                             name="name"
                             required
                             placeholder="الاسم"
-                            value="{{ old('name', $admin->name) }}"
+                            value="{{ old('name') }}"
                             id="name"
                         >
                     </div>
@@ -35,7 +34,7 @@
                             id="email"
                             required
                             placeholder="البريد الالكتروني"
-                            value="{{ old('email', $admin->email) }}"
+                            value="{{ old('email') }}"
                             >
                     </div>
 
@@ -46,16 +45,28 @@
                             name="username"
                             required
                             placeholder="التاريخ"
-                            value="{{ old('username', $admin->username) }}"
+                            value="{{ old('username') }}"
                             id="username"
                         >
                     </div>
+
+                    {{-- <div class="form-group">
+                        <label class="checkbox-inline">
+                            <input type="hidden" name="active" value="0">
+                            <input type="checkbox"
+                                name="active"
+                                value="1"
+                                {{ old('active') == 1 ? 'checked' : '' }}
+                            >
+                                مفعل
+                        </label>
+                    </div> --}}
                 </div>
 
                 <div class="box-footer">
-                    <button type="submit" class="btn btn-primary">تعديل</button>
+                    <button type="submit" class="btn btn-primary">حفظ</button>
 
-                    <a href="{{ route('clink.admins.index') }}" class="btn btn-default">
+                    <a href="{{ route('admin.admins.index') }}" class="btn btn-default">
                         إلغاء
                     </a>
                 </div>

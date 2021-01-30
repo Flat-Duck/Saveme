@@ -1,4 +1,4 @@
-@extends('clink.layouts.app', ['page' => 'admins'])
+@extends('admin.layouts.app', ['page' => 'admins'])
 
 @section('title', 'إدارة المستخدمين')
 
@@ -9,7 +9,7 @@
             <div class="box-header with-border">
                 <h3 class="box-title">إدارة المستخدمين</h3>
 
-                <a class="pull-right btn btn-sm btn-primary" href="{{ route('clink.admins.create') }}">
+                <a class="pull-right btn btn-sm btn-primary" href="{{ route('admin.admins.create') }}">
                     إضافة جديد
                 </a>
             </div>
@@ -39,11 +39,11 @@
                 @endif 
                       
                             <td>
-                                <a href="{{ route('clink.admins.edit', ['admin' => $admin->id]) }}">
+                                <a href="{{ route('admin.admins.edit', ['admin' => $admin->id]) }}">
                                    <i class="fa fa-pencil-square-o"></i>
                                 </a>
 
-                                <form action="{{ route('clink.admins.destroy', ['admin' => $admin->id]) }}"
+                                <form action="{{ route('admin.admins.destroy', ['admin' => $admin->id]) }}"
                                     method="POST"
                                     class="inline pointer"
                                 >

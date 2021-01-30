@@ -1,4 +1,4 @@
-@extends('clink.layouts.app', ['page' => 'admins'])
+@extends('admin.layouts.app', ['page' => 'admins'])
 
 @section('title', 'تعديل المستخدم')
 
@@ -10,7 +10,7 @@
                 <h3 class="box-title">تعديل المستخدم</h3>
             </div>
 
-            <form role="form" method="POST" action="{{ route('clink.admins.update', ['admin' => $admin->id]) }}">
+            <form role="form" method="POST" action="{{ route('admin.admins.update', ['admin' => $admin->id]) }}">
                 @csrf
                 @method('PUT')
 
@@ -55,7 +55,7 @@
                 <div class="box-footer">
                     <button type="submit" class="btn btn-primary">تعديل</button>
 
-                    <a href="{{ route('clink.admins.index') }}" class="btn btn-default">
+                    <a href="{{ route('admin.admins.index') }}" class="btn btn-default">
                         إلغاء
                     </a>
                 </div>

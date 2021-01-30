@@ -99,5 +99,13 @@ class Admin extends Authenticatable
     {
         return $this->belongsTo('App\Clink');
     }
-
+    /**
+     * Returns the paginated list of resources
+     *
+     * @return \Illuminate\Pagination\Paginator
+     **/
+    public static function getList()
+    {
+        return static::wherenull('clink_id')->paginate(10);
+    }
 }

@@ -109,7 +109,12 @@
                             <span>بيانات العيادة</span>
                         </a>
                     </li>
-
+                    <li {{ $page == 'admins' ? ' class=active' : '' }}>
+                        <a href="{{ route('clink.admins.index') }}">
+                            <i class="fa fa-users"></i>
+                            <span>إدارة مستخدمين العيادة </span>
+                        </a>
+                    </li>
                     
                     <li {{ $page == 'reactive' ? ' class=active' : '' }}>
                         <a href="{{ route('clink.reactive') }}">

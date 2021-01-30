@@ -103,7 +103,12 @@
                             <span>لوحة التحكم</span>
                         </a>
                     </li>
-
+                    <li {{ $page == 'admins' ? ' class=active' : '' }}>
+                        <a href="{{ route('admin.admins.index') }}">
+                            <i class="fa fa-users"></i>
+                            <span>إدارة مستخدمين النظام </span>
+                        </a>
+                    </li>
                     <li {{ $page == 'clink' ? ' class=active' : '' }}>
                         <a href="{{ route('admin.clinks.index') }}">
                             <i class="fa fa-hospital-o"></i>

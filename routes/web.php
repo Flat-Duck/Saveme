@@ -39,7 +39,7 @@ Route::name('admin.')->prefix('admin')->namespace('Admin')->group(function () {
         Route::put('clinks/{clink}','ClinkController@update');
         Route::delete('clink/{clink}', 'ClinkController@destroy'); 
             
-
+        Route::resource('admins', 'AdminsController');
         Route::resource('clinks', 'ClinkController');
 
         Route::resource('devices', 'DeviceController');

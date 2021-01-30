@@ -1,4 +1,4 @@
-@extends('clink.layouts.app', ['page' => 'admin'])
+@extends('clink.layouts.app', ['page' => 'admins'])
 
 @section('title', 'إضافة مستخدم جديد')
 

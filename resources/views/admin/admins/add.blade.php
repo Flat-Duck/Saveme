@@ -44,7 +44,7 @@
                             class="form-control"
                             name="username"
                             required
-                            placeholder="التاريخ"
+                            placeholder="أسم المستخدم"
                             value="{{ old('username') }}"
                             id="username"
                         >

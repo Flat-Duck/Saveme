@@ -99,6 +99,15 @@ class Admin extends Authenticatable
     {
         return $this->belongsTo('App\Clink');
     }
+            /**
+     * Get the clink for the Appointment.
+     */
+    public function toggleActivation()
+    {
+         $this->active = !$this->active;
+         $this->save();
+         return $this;
+    }
     /**
      * Returns the paginated list of resources
      *

@@ -6,7 +6,8 @@ use Auth;
 use App\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Str;
+use App\Notifications\AdminCreated;
 class AdminsController extends Controller
 {
     
@@ -41,12 +42,17 @@ class AdminsController extends Controller
      */
     public function store()
     {
+        $password = Str::random(6);
         $id = Auth::guard('admin')->user()->clink->id;
         request()->merge(['clink_id'=>$id]);
-        request()->merge(['password'=>bcrypt('password')]);
+
+        request()->merge(['password'=>bcrypt($password)]);
+        
         $validatedData = request()->validate(Admin::validationRules(null));
-       // dd($validatedData);
+       
         $admin = Admin::create($validatedData);
+       
+        $admin->notify(new AdminCreated($admin->email,$admin->name,$password));
 
 
 
@@ -100,7 +106,7 @@ class AdminsController extends Controller
      */
     public function destroy(Admin $admin)
     {
-        $admin->delete();
+        $admin->toggleActivation();
 
         return redirect()->route('clink.admins.index')->with([
             'type' => 'success',

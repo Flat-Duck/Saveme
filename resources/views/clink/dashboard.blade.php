@@ -11,8 +11,9 @@
             <div class="box-header with-border">
                 <h3 class="box-title">لوحة التحكم الرئيسية</h3>
             </div>
-            <div class="box-body">
-                <div class="row">
+            <div class="box-body"  >
+                <img width="100%" src="/../images/dash.jpg">
+                {{-- <div class="row">
                     <div class="col-lg-6 col-xs-6">
                         <!-- small box -->
                         <div class="small-box bg-yellow">
@@ -81,7 +82,7 @@
                         </div>
                     </div>
                     <!-- ./col -->
-                </div>
+                </div> --}}
             </div>
         </div>
     </div>

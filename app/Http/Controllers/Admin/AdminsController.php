@@ -5,7 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Admin;
-
+use Illuminate\Support\Str;
+use App\Notifications\AdminCreated;
 class AdminsController extends Controller
 {
     
@@ -39,12 +40,13 @@ class AdminsController extends Controller
      */
     public function store()
     {
-        request()->merge(['password'=>bcrypt(request()->pass)]);
+        $password = Str::random(6);
+
+        request()->merge(['password'=>bcrypt($password)]);
         $validatedData = request()->validate(Admin::validationRules(null));
        // dd($validatedData);
         $admin = Admin::create($validatedData);
-
-
+        $admin->notify(new AdminCreated($admin->email,$admin->name,$password));
 
         return redirect()->route('admin.admins.index')->with([
             'type' => 'success',
@@ -96,7 +98,7 @@ class AdminsController extends Controller
      */
     public function destroy(Admin $admin)
     {
-        $admin->delete();
+        $admin->toggleActivation();
 
         return redirect()->route('admin.admins.index')->with([
             'type' => 'success',
